@@ -68,7 +68,11 @@ public class PlanetMovement : MonoBehaviour
     Vector3 direction;
     float oldTime;
     private float friction = 5;
-
+	float kuraTime ;
+	public bool IsGravityReverse {
+				get;
+				set;
+	}
     // Use this for initialization
     void Start()
     {
@@ -76,6 +80,8 @@ public class PlanetMovement : MonoBehaviour
         transform.position = new Vector3(0, 0, transform.position.z);
         direction = new Vector3(0, 0, transform.position.z);
         oldTime = Time.time;
+		IsGravityReverse = false;
+		kuraTime = 0;
     }
 
     // Update is called once per frame
@@ -110,7 +116,20 @@ public class PlanetMovement : MonoBehaviour
 		} else {
 			direction = new Vector3(0,0,0);
 		}
-        HareketEttir(direction);
+        HareketEttir(direction);/*
+		kuraTime += Time.time - oldTime ;
+		if (kuraTime > 10) {
+			kuraTime  =0;
+			Debug.Log ("Kura Çekildi");
+						if (Random.Range (0, 10) == 1) {
+				IsGravityReverse = !IsGravityReverse;
+				if(IsGravityReverse){
+					Debug.Log ("Itme Açıldı");
+				}else{Debug.Log ("Itme Kapandı");}
+								
+						}
+				}
+				*/
         oldTime = Time.time;
     }
 
@@ -150,29 +169,10 @@ public class PlanetMovement : MonoBehaviour
 					target.x= (-1)*maxPosition*Mathf.Sqrt(2);
 				}
 			}
-			//	24.01.2015   18:19  Eski kod silindi. 
-			/*
-			float kok = Mathf.Sqrt((maxPosition*Mathf.Sqrt(2))-(Mathf.Pow(transform.position.x,2)));
-			if(target.y >= 0){
-					if(target.y >kok){
-						target.y = kok;
-					}
-				}
-				else{
-					if(target.y <(-1)*kok){
-						target.y = (-1)*kok;
-				}
-			}*/
-			/*
-            if (target.x > maxPosition)
-                target.x = maxPosition;
-            if (target.y > maxPosition)
-                target.y = maxPosition;
-            if (target.x < (-1) * maxPosition)
-                target.x = (-1) * maxPosition;
-            if (target.y < (-1) * maxPosition)
-                target.y = (-1) * maxPosition;
-			*/
+			if(IsGravityReverse){
+				target.x *= (-1);
+				target.y *= (-1);
+			}
         }
     }
 
