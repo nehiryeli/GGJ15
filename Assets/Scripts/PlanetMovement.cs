@@ -60,11 +60,15 @@ public class Player
 }
 public class PlanetMovement : MonoBehaviour
 {
-    public float maxPosition = 20;
+    public float maxPosition = 1.7f;
     Vector3 target;
-    public float Hiz = 100;
+	public float ivme = 50f;
+	//private float Hiz = 0;
+	private Vector3 hiz = new Vector3 (0, 0, 0);
     Vector3 direction;
     float oldTime;
+    private float friction = 5;
+
     // Use this for initialization
     void Start()
     {
@@ -101,11 +105,11 @@ public class PlanetMovement : MonoBehaviour
         target = new Vector3(0, 0, transform.position.z);
         TargetHesapla();
 
-        if ((target - transform.position).magnitude != 0)
-        {
-            direction = (target - transform.position) / (target - transform.position).magnitude;
-        }
-
+		if ((target - transform.position).magnitude != 0) {
+			direction = (target - transform.position) / (target - transform.position).magnitude;
+		} else {
+			direction = new Vector3(0,0,0);
+		}
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -157,14 +161,18 @@ public class PlanetMovement : MonoBehaviour
     }
 
     void HareketEttir(Vector3 dir)
-    {
-        if ((target - transform.position).magnitude < (dir * ((Time.time - oldTime) * Hiz)).magnitude)
-            transform.position = target;
-        else
-        {
-            transform.Translate(dir * ((Time.time - oldTime) * Hiz));
-        }
-
+	{float deltaT = Time.time - oldTime;
+		
+		hiz -= hiz * friction *deltaT;
+		if ((target - transform.position).magnitude < (  (deltaT * hiz)).magnitude) {
+			transform.position = target;
+			hiz = new Vector3(0,0,0);
+		}						
+		else
+		{
+			hiz += dir*ivme*deltaT;
+			transform.Translate((deltaT * hiz));
+		}
     }
 
     public void OnTriggerEnter(Collider c)
