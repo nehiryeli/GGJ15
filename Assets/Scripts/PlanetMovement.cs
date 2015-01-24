@@ -60,7 +60,7 @@ public class Player
 }
 public class PlanetMovement : MonoBehaviour
 {
-    public float maxPosition = 1.7f;
+    public float maxPosition = 1.9f;
     Vector3 target;
 	public float ivme = 50f;
 	//private float Hiz = 0;
@@ -132,6 +132,38 @@ public class PlanetMovement : MonoBehaviour
         }
         else
         {
+			if(target.x == 0)
+			{
+				if(target.y >maxPosition*Mathf.Sqrt(2)){
+					target.y =maxPosition*Mathf.Sqrt(2);
+				}
+				if(target.y < (-1)*maxPosition*Mathf.Sqrt(2)){
+					target.y = (-1)*maxPosition*Mathf.Sqrt(2);
+				}
+			}
+			if(target.y == 0)
+			{
+				if(target.x >maxPosition*Mathf.Sqrt(2)){
+					target.x =maxPosition*Mathf.Sqrt(2);
+				}
+				if(target.x < (-1)*maxPosition*Mathf.Sqrt(2)){
+					target.x= (-1)*maxPosition*Mathf.Sqrt(2);
+				}
+			}
+			//	24.01.2015   18:19  Eski kod silindi. 
+			/*
+			float kok = Mathf.Sqrt((maxPosition*Mathf.Sqrt(2))-(Mathf.Pow(transform.position.x,2)));
+			if(target.y >= 0){
+					if(target.y >kok){
+						target.y = kok;
+					}
+				}
+				else{
+					if(target.y <(-1)*kok){
+						target.y = (-1)*kok;
+				}
+			}*/
+			/*
             if (target.x > maxPosition)
                 target.x = maxPosition;
             if (target.y > maxPosition)
@@ -140,6 +172,7 @@ public class PlanetMovement : MonoBehaviour
                 target.x = (-1) * maxPosition;
             if (target.y < (-1) * maxPosition)
                 target.y = (-1) * maxPosition;
+			*/
         }
     }
 
