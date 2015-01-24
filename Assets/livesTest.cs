@@ -3,7 +3,7 @@ using System.Collections;
 
 public class livesTest : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         GameManager.onLifeChanged += life;
     }
