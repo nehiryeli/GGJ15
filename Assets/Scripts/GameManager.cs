@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager inst;
+	public string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
 
     public enemySpawner eSpawn;
     public PlanetMovement pMove;

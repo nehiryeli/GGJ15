@@ -8,9 +8,9 @@ public class meteor : MonoBehaviour
     public Transform[] parts;
     Renderer[] placeholder;
     //List<string> elements = new List<string>();
-    public string[] elements = new string[2];
+	public string element;
 
-    string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
+
 
     void Start()
     {
@@ -20,19 +20,15 @@ public class meteor : MonoBehaviour
 
     void generator()
     {
+
         int partToRemove = Random.Range(0, parts.Length);
         int elementIndex = Random.Range(0, 5);
         if (elementIndex != 4)
         {//son elemen elementsiz parçayı gösterir
-            this.elements[0] = elementsList[elementIndex];
+			element = GameManager.inst.elementsList[elementIndex];
             //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
         }
-        elementIndex = Random.Range(0, 5);
-        if (elementIndex != 4)
-        {//son elemen elementsiz parçayı gösterir
-            this.elements[1] = elementsList[elementIndex];
-            //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
-        }
+      	
         parts[partToRemove].gameObject.SetActive(false);
     }
 
