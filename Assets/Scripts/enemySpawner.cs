@@ -24,6 +24,5 @@ public class enemySpawner : MonoBehaviour
         meteorObj.position = new Vector3(500, 0, 0);
 
         var q = meteorObj.GetComponent<meteor>();
-        q.speed = GameManager.inst.s_curr_speed;
     }
 }

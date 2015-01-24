@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager inst;
 
+    public enemySpawner eSpawn;
+
     public float
-        s_curr_speed,
-        s_timer,
         s_inc;
 
     List<Player> players;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     public int score = 0;
 
-    IEnumerator Start()
+    void Start()
     {
         players = new List<Player>
             {
@@ -36,12 +36,6 @@ public class GameManager : MonoBehaviour
             };
 
         SwitchPlayers(Direction.Left);
-
-        while (true)
-        {
-            yield return new WaitForSeconds(s_timer);
-            s_curr_speed += s_inc;
-        }
     }
 
     public void LifeDec()
@@ -61,10 +55,14 @@ public class GameManager : MonoBehaviour
 
     public void MeteorDestroyed()
     {
-        if(l_active)
+        if (l_active)
         {
             score += 5;
         }
+
+        eSpawn.spawnTime -= s_inc;
+
+        //enemySpawner.s_inc;
     }
 
     bool l_active = true;

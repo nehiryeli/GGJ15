@@ -539,9 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c690044ed855f4abef435d333845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_curr_speed: 3
-  s_timer: 15
-  s_inc: -.5
+  eSpawn: {fileID: 808576508}
+  s_inc: .100000001
   lives: 3
   score: 0
 --- !u!114 &808576508
@@ -888,7 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
