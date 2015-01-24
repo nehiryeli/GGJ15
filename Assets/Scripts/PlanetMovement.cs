@@ -62,9 +62,9 @@ public class PlanetMovement : MonoBehaviour
 {
     public float maxPosition = 1.9f;
     Vector3 target;
-    public float ivme = 50f;
-    //private float Hiz = 0;
-    private Vector3 hiz = new Vector3(0, 0, 0);
+	public float ivme = 50f;
+	//private float Hiz = 0;
+	private Vector3 hiz = new Vector3 (0, 0, 0);
     Vector3 direction;
     float oldTime;
     private float friction = 5;
@@ -105,14 +105,11 @@ public class PlanetMovement : MonoBehaviour
         target = new Vector3(0, 0, transform.position.z);
         TargetHesapla();
 
-        if ((target - transform.position).magnitude != 0)
-        {
-            direction = (target - transform.position) / (target - transform.position).magnitude;
-        }
-        else
-        {
-            direction = new Vector3(0, 0, 0);
-        }
+		if ((target - transform.position).magnitude != 0) {
+			direction = (target - transform.position) / (target - transform.position).magnitude;
+		} else {
+			direction = new Vector3(0,0,0);
+		}
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -135,42 +132,38 @@ public class PlanetMovement : MonoBehaviour
         }
         else
         {
-            if (target.x == 0)
-            {
-                if (target.y > maxPosition * Mathf.Sqrt(2))
-                {
-                    target.y = maxPosition * Mathf.Sqrt(2);
-                }
-                if (target.y < (-1) * maxPosition * Mathf.Sqrt(2))
-                {
-                    target.y = (-1) * maxPosition * Mathf.Sqrt(2);
-                }
-            }
-            if (target.y == 0)
-            {
-                if (target.x > maxPosition * Mathf.Sqrt(2))
-                {
-                    target.x = maxPosition * Mathf.Sqrt(2);
-                }
-                if (target.x < (-1) * maxPosition * Mathf.Sqrt(2))
-                {
-                    target.x = (-1) * maxPosition * Mathf.Sqrt(2);
-                }
-            }
-            //	24.01.2015   18:19  Eski kod silindi. 
-            /*
-            float kok = Mathf.Sqrt((maxPosition*Mathf.Sqrt(2))-(Mathf.Pow(transform.position.x,2)));
-            if(target.y >= 0){
-                    if(target.y >kok){
-                        target.y = kok;
-                    }
-                }
-                else{
-                    if(target.y <(-1)*kok){
-                        target.y = (-1)*kok;
-                }
-            }*/
-            /*
+			if(target.x == 0)
+			{
+				if(target.y >maxPosition*Mathf.Sqrt(2)){
+					target.y =maxPosition*Mathf.Sqrt(2);
+				}
+				if(target.y < (-1)*maxPosition*Mathf.Sqrt(2)){
+					target.y = (-1)*maxPosition*Mathf.Sqrt(2);
+				}
+			}
+			if(target.y == 0)
+			{
+				if(target.x >maxPosition*Mathf.Sqrt(2)){
+					target.x =maxPosition*Mathf.Sqrt(2);
+				}
+				if(target.x < (-1)*maxPosition*Mathf.Sqrt(2)){
+					target.x= (-1)*maxPosition*Mathf.Sqrt(2);
+				}
+			}
+			//	24.01.2015   18:19  Eski kod silindi. 
+			/*
+			float kok = Mathf.Sqrt((maxPosition*Mathf.Sqrt(2))-(Mathf.Pow(transform.position.x,2)));
+			if(target.y >= 0){
+					if(target.y >kok){
+						target.y = kok;
+					}
+				}
+				else{
+					if(target.y <(-1)*kok){
+						target.y = (-1)*kok;
+				}
+			}*/
+			/*
             if (target.x > maxPosition)
                 target.x = maxPosition;
             if (target.y > maxPosition)
@@ -179,7 +172,7 @@ public class PlanetMovement : MonoBehaviour
                 target.x = (-1) * maxPosition;
             if (target.y < (-1) * maxPosition)
                 target.y = (-1) * maxPosition;
-            */
+			*/
         }
     }
 
@@ -201,25 +194,23 @@ public class PlanetMovement : MonoBehaviour
     }
 
     void HareketEttir(Vector3 dir)
-    {
-        float deltaT = Time.time - oldTime;
-
-        hiz -= hiz * friction * deltaT;
-        if ((target - transform.position).magnitude < ((deltaT * hiz)).magnitude)
-        {
-            transform.position = target;
-            hiz = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            hiz += dir * ivme * deltaT;
-            transform.Translate((deltaT * hiz));
-        }
+	{float deltaT = Time.time - oldTime;
+		
+		hiz -= hiz * friction *deltaT;
+		if ((target - transform.position).magnitude < (  (deltaT * hiz)).magnitude) {
+			transform.position = target;
+			hiz = new Vector3(0,0,0);
+		}						
+		else
+		{
+			hiz += dir*ivme*deltaT;
+			transform.Translate((deltaT * hiz));
+		}
     }
 
     public void OnTriggerEnter(Collider c)
     {
-        switch (c.tag)
+        switch(c.tag)
         {
             case "fire": break;
             case "earth": break;
@@ -227,6 +218,7 @@ public class PlanetMovement : MonoBehaviour
             case "lightning": break;
             default:
                 GameManager.inst.LifeDec();
+
                 break;
         }
     }
