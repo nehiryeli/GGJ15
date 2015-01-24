@@ -168,5 +168,17 @@ public class PlanetMovement : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider c)
-    { Debug.Log(c.name); }
+    {
+        switch(c.tag)
+        {
+            case "fire": break;
+            case "earth": break;
+            case "water": break;
+            case "lightning": break;
+            default:
+                GameManager.inst.LifeDec();
+
+                break;
+        }
+    }
 }

@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public static Action<int>
         onScoreUpdated,
         onLifeChanged;
-    //a_onPowerupUpdate
+
+    public int lives = 3;
 
     void Start()
     {
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void LifeDec()
+    {
+        lives -= 1;
+    }
 
     public static List<Player> getPlayers()
     {
