@@ -35,13 +35,25 @@ public class GameManager : MonoBehaviour
 
     public void LifeDec()
     {
-        lives -= 1;
+        if (l_active)
+        {
+            StartCoroutine(waitForLive());
+            lives -= 1;
 
-        if (lives < 0)
-            Application.LoadLevel(0);
-        else
-            if (onLifeChanged != null)
-                onLifeChanged(lives);
+            if (lives < 0)
+                Application.LoadLevel(0);
+            else
+                if (onLifeChanged != null)
+                    onLifeChanged(lives);
+        }
+    }
+
+    bool l_active = true;
+    IEnumerator waitForLive()
+    {
+        l_active = false;
+        yield return new WaitForSeconds(1f);
+        l_active = true;
     }
 
     public static List<Player> getPlayers()
