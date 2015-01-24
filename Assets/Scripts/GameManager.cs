@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager inst;
 	public string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
 
+    public Text scorePW;
     public enemySpawner eSpawn;
     public PlanetMovement pMove;
 
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour
             score += 5;
             if (onScoreUpdated != null)
                 onScoreUpdated(score);
+
+            scorePW.text = score.ToString();
         }
 
         eSpawn.spawnTime -= s_inc;

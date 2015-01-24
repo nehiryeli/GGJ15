@@ -148,7 +148,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &50027828
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +848,7 @@ Transform:
   m_Children:
   - {fileID: 50027829}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!95 &674853697
 Animator:
   serializedVersion: 3
@@ -952,7 +952,7 @@ Transform:
   - {fileID: 1683713275}
   - {fileID: 809336064}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &758227166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1174,7 @@ Transform:
   m_Children:
   - {fileID: 1781466016}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!114 &808576506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c690044ed855f4abef435d333845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementsList:
+  - fire
+  - water
+  - lightning
+  - earth
+  scorePW: {fileID: 1423723229}
   eSpawn: {fileID: 808576508}
   pMove: {fileID: 1159363281}
   s_inc: .100000001
@@ -1296,7 +1302,7 @@ Transform:
   - {fileID: 681325830}
   - {fileID: 1998168929}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!95 &840923269
 Animator:
   serializedVersion: 3
@@ -1667,7 +1673,7 @@ Transform:
   m_Children:
   - {fileID: 1912151526}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1159363281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2900,7 +2906,7 @@ RectTransform:
   m_Children:
   - {fileID: 1423723228}
   - {fileID: 1851443899}
-  m_Father: {fileID: 1312810341}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3008,49 +3014,6 @@ Prefab:
   m_RootGameObject: {fileID: 674853695}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1312810340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 105658, guid: 554abb78d588d9d45b331bdf471ad6ca, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1312810341}
-  - 114: {fileID: 1312810342}
-  m_Layer: 0
-  m_Name: GuiManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1312810341
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 405650, guid: 554abb78d588d9d45b331bdf471ad6ca, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1312810340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1235854457}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
---- !u!114 &1312810342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11405654, guid: 554abb78d588d9d45b331bdf471ad6ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1312810340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a67e928ec9ad444bba6951d56117ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1423723229}
-  livesParent: {fileID: 1851443899}
 --- !u!1 &1372154391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,10 +3153,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1235854457}
   m_RootOrder: 0
-  m_AnchorMin: {x: .0127805918, y: .784399271}
-  m_AnchorMax: {x: 1, y: .908592939}
-  m_AnchoredPosition: {x: -4.81189156, y: 50.0000153}
-  m_SizeDelta: {x: -308, y: 99.9999695}
+  m_AnchorMin: {x: 0, y: .848333418}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: .100000001, y: -3.67549992}
+  m_SizeDelta: {x: -319, y: 7.35099983}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1423723229
 MonoBehaviour:
@@ -3211,7 +3174,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -3790,7 +3753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1851443898
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4055,7 +4018,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &2085949941
 GameObject:
   m_ObjectHideFlags: 0
