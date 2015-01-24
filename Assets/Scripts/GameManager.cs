@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
     public void LifeDec()
     {
         lives -= 1;
+
+        if (onLifeChanged != null)
+            onLifeChanged(lives);
+
+        if (lives < 0)
+            Application.LoadLevel(0);
     }
 
     public static List<Player> getPlayers()
