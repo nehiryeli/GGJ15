@@ -10,7 +10,7 @@ public class meteor : MonoBehaviour
     //List<string> elements = new List<string>();
 	public string element;
 	public Material[] mat_elem;
-
+	//public Shader shader2 = Shader.Find("Transparent/Bumped Spectecular");
 
 
     void Start()
@@ -30,10 +30,15 @@ public class meteor : MonoBehaviour
             //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
         }
       	
-		parts [partToRemove].gameObject.renderer.tag = "elemental";
-		if (elementIndex >= GameManager.inst.elementsList.Length)
-						elementIndex--;
-		parts [partToRemove].gameObject.renderer.material = mat_elem [elementIndex];
+
+		if (elementIndex + 1 < GameManager.inst.elementsList.Length) {
+				parts [partToRemove].gameObject.renderer.tag = "elemental";
+				parts [partToRemove].gameObject.renderer.material = mat_elem [elementIndex];
+		} else {
+			parts [partToRemove].gameObject.SetActive(false);
+		}
+						
+
     }
 
     void Update()
