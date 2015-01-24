@@ -69,7 +69,7 @@ public class PlanetMovement : MonoBehaviour
     float oldTime;
     private float friction = 5;
 	float kuraTime ;
-	public bool IsGravityReverse {
+	public bool IsGravityInverse {
 				get;
 				set;
 	}
@@ -80,7 +80,7 @@ public class PlanetMovement : MonoBehaviour
         transform.position = new Vector3(0, 0, transform.position.z);
         direction = new Vector3(0, 0, transform.position.z);
         oldTime = Time.time;
-		IsGravityReverse = false;
+		IsGravityInverse = false;
 		kuraTime = 0;
     }
 
@@ -116,7 +116,9 @@ public class PlanetMovement : MonoBehaviour
 		} else {
 			direction = new Vector3(0,0,0);
 		}
-        HareketEttir(direction);/*
+        HareketEttir(direction);
+
+		/*
 		kuraTime += Time.time - oldTime ;
 		if (kuraTime > 10) {
 			kuraTime  =0;
@@ -169,7 +171,7 @@ public class PlanetMovement : MonoBehaviour
 					target.x= (-1)*maxPosition*Mathf.Sqrt(2);
 				}
 			}
-			if(IsGravityReverse){
+			if(IsGravityInverse){
 				target.x *= (-1);
 				target.y *= (-1);
 			}
@@ -218,8 +220,28 @@ public class PlanetMovement : MonoBehaviour
             case "lightning": break;
             default:
                 GameManager.inst.LifeDec();
-
                 break;
         }
     }
+	public void PivotToLeft(int howManyTimes){
+		var p = GameManager.getPlayers();
+		for (int j = 0; j < howManyTimes; j++) {
+			Pozisyon buffer = p.ToArray () [0].kose;
+			for (int i = 1; i <4; i++) {
+				p.ToArray () [i-1].kose = 	p.ToArray () [i].kose; 
+			}
+			p.ToArray () [3].kose = buffer;
+				}
+	}
+	public void PivotToRight(int howManyTimes){
+		var p = GameManager.getPlayers();
+		for (int j = 0; j < howManyTimes; j++) {
+						Pozisyon buffer = p.ToArray () [3].kose;
+						for (int i = 3; i <0; i++) {
+								p.ToArray () [i].kose = p.ToArray () [i - 1].kose; 
+						}
+						p.ToArray () [0].kose = buffer;
+				}
+	}
+
 }

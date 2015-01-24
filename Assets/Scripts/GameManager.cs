@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
             {
 			    new Player (KeyCode.A, KeyCode.Z, Pozisyon.NW,Element.Ateş),
 			    new Player (KeyCode.G, KeyCode.B, Pozisyon.NE,Element.Elektrik),
-			    new Player (KeyCode.UpArrow, KeyCode.DownArrow, Pozisyon.SW,Element.Su),
-			    new Player (KeyCode.Keypad6, KeyCode.Keypad3, Pozisyon.SE,Element.Toprak)
+			    new Player (KeyCode.UpArrow, KeyCode.DownArrow, Pozisyon.SE,Element.Su),
+			    new Player (KeyCode.Keypad6, KeyCode.Keypad3, Pozisyon.SW,Element.Toprak)
             };
 
         SwitchPlayers(Direction.Left);
