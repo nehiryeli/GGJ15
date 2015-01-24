@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour
     {
         lives -= 1;
 
-        if (onLifeChanged != null)
-            onLifeChanged(lives);
-
         if (lives < 0)
             Application.LoadLevel(0);
+        else
+            if (onLifeChanged != null)
+                onLifeChanged(lives);
     }
 
     public static List<Player> getPlayers()
@@ -61,15 +61,11 @@ public class GameManager : MonoBehaviour
     }
 
     void Awake()
-    { inst = this; }
+    {
+        inst = this;
+        onScoreUpdated = onLifeChanged = null;
+    }
 }
-
-/*public class Player
-{
-    public string pn;
-    public Player(string nm = "p")
-    { pn = nm; }
-}*/
 
 public enum Direction
 {
