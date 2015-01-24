@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 public enum Pozisyon
 {
     NW,
@@ -165,4 +166,7 @@ public class PlanetMovement : MonoBehaviour
         }
 
     }
+
+    public void OnTriggerEnter(Collider c)
+    { Debug.Log(c.name); }
 }
