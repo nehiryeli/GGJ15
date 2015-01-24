@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager inst;
 
+    public float
+        s_curr_speed,
+        s_timer,
+        s_inc;
+
     List<Player> players;
 
     public static Action
@@ -19,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public int lives = 3;
 
-    void Start()
+    IEnumerator Start()
     {
         players = new List<Player>
             {
@@ -31,17 +36,34 @@ public class GameManager : MonoBehaviour
 
         SwitchPlayers(Direction.Left);
 
+        while (true)
+        {
+            yield return new WaitForSeconds(s_timer);
+            s_curr_speed += s_inc;
+        }
     }
 
     public void LifeDec()
     {
-        lives -= 1;
+        if (l_active)
+        {
+            StartCoroutine(waitForLive());
+            lives -= 1;
 
-        if (lives < 0)
-            Application.LoadLevel(0);
-        else
-            if (onLifeChanged != null)
-                onLifeChanged(lives);
+            if (lives < 0)
+                Application.LoadLevel(0);
+            else
+                if (onLifeChanged != null)
+                    onLifeChanged(lives);
+        }
+    }
+
+    bool l_active = true;
+    IEnumerator waitForLive()
+    {
+        l_active = false;
+        yield return new WaitForSeconds(1f);
+        l_active = true;
     }
 
     public static List<Player> getPlayers()
