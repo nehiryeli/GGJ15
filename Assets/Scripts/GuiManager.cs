@@ -55,12 +55,19 @@ public class GuiManager : MonoBehaviour
 
     void OnLifeChanged(int livesLeft)
     {
-        #region ImageBasedLives
-        //for (int i = 0; i < livesParent.childCount; i++)
-        //{
-        //    if (i > livesLeft - 1) livesParent.GetChild(i).gameObject.SetActive(false);
-        //    else livesParent.GetChild(i).gameObject.SetActive(true);
-        //} 
-        #endregion
+        for (int i = 0; i < livesParent.childCount; i++)
+        {
+            if (i > livesLeft - 1) livesParent.GetChild(i).gameObject.SetActive(false);
+            else livesParent.GetChild(i).gameObject.SetActive(true);
+        } 
+    }
+
+    void Update()
+    {
+        //Test
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnLifeChanged(1);
+        }
     }
 }
