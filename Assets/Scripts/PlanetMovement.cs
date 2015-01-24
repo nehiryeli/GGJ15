@@ -233,7 +233,7 @@ public class PlanetMovement : MonoBehaviour
 				}
 	}
 
-	public Element[] ElementBelirle(){
+	public void ElementBelirle(){
 		var p = GameManager.getPlayers();
 		int ates =0;
 		int su =0;
