@@ -122,6 +122,7 @@ public class PlanetMovement : MonoBehaviour
         {
             direction = new Vector3(0, 0, 0);
         }
+		ElementBelirle ();
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -314,6 +315,7 @@ public class PlanetMovement : MonoBehaviour
     }
     public bool IsElementsEqual(string meteorElementi)
     {
+		Debug.Log (System.Convert.ToString (status[0])+System.Convert.ToString (status[1]));
         switch (meteorElementi)
         {
             case "fire":
