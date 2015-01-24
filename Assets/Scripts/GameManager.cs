@@ -22,22 +22,26 @@ public class GameManager : MonoBehaviour
     {
         players = new List<Player>
             {
-                 new Player("1")
-                ,new Player("2")
-                ,new Player("3")
-                ,new Player("4")
+			    new Player (KeyCode.A, KeyCode.Z, Pozisyon.NW,Element.Ateş),
+			    new Player (KeyCode.G, KeyCode.B, Pozisyon.NE,Element.Elektrik),
+			    new Player (KeyCode.UpArrow, KeyCode.DownArrow, Pozisyon.SW,Element.Su),
+			    new Player (KeyCode.Keypad6, KeyCode.Keypad3, Pozisyon.SE,Element.Toprak)
             };
 
         SwitchPlayers(Direction.Left);
 
-        foreach (var p in players)
-            Debug.Log(p.pn);
     }
 
+
+    public static List<Player> getPlayers()
+    {
+        return inst.players;
+    }
     public static void SwitchPlayers(Direction d)
     {
-        var r_from = d == Direction.Left ? inst.players.Count - 1 : 0;
-        var r_to = d == Direction.Left ? 0 : inst.players.Count - 1;
+        var l_p = inst.players.Count - 1;
+        var r_from = d == Direction.Left ? l_p : 0;
+        var r_to = d == Direction.Left ? 0 : l_p;
 
         var item = inst.players[r_from];
 
@@ -49,12 +53,12 @@ public class GameManager : MonoBehaviour
     { inst = this; }
 }
 
-public class Player
+/*public class Player
 {
     public string pn;
     public Player(string nm = "p")
     { pn = nm; }
-}
+}*/
 
 public enum Direction
 {
