@@ -5,19 +5,23 @@ using UnityEngine.UI;
 public class GuiManager : MonoBehaviour
 {
     public Text scoreText;
-    public float lifePadding = 50;
     public Transform livesParent;
     GameObject[] _lives;
     Transform _transform;
 
+    private float _latestScore = 0;
+    private float _targetScore;
+
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         _transform = transform;
+        GameManager.onScoreUpdated += OnScoreUpdated;
+        GameManager.onLifeChanged += OnLifeChanged;
     }
     void OnScoreUpdated(int score)
     {
-        scoreText.text = score.ToString("N0");
+        _targetScore = score;
     }
 
     void OnLifeChanged(int livesLeft)
@@ -33,9 +37,7 @@ public class GuiManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnLifeChanged(0);
-        }
+        _latestScore = Mathf.Lerp(_latestScore, _targetScore, Time.deltaTime * 2);
+        scoreText.text = _latestScore.ToString("N0");
     }
 }

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: LifeLost 1
+  m_Name: LifeLost 2
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -19,14 +19,14 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: 1, y: 1, z: 1}
-        inSlope: {x: 8, y: 8, z: 8}
-        outSlope: {x: 8, y: 8, z: 8}
-        tangentMode: 1095761921
-      - time: .5
+        inSlope: {x: 2, y: 2, z: 2}
+        outSlope: {x: 2, y: 2, z: 2}
+        tangentMode: 1073741824
+      - time: 2
         value: {x: 5, y: 5, z: 5}
-        inSlope: {x: 8, y: 8, z: 8}
-        outSlope: {x: 8, y: 8, z: 8}
-        tangentMode: 0
+        inSlope: {x: 2, y: 2, z: 2}
+        outSlope: {x: 2, y: 2, z: 2}
+        tangentMode: 1073741824
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -51,7 +51,7 @@ AnimationClip:
     classID: 114
     script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_PPtrCurves: []
-  m_SampleRate: 60
+  m_SampleRate: 30
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -74,7 +74,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .5
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -94,13 +94,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
-      - time: .5
+      - time: 2
         value: 5
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -113,13 +113,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
-      - time: .5
+      - time: 2
         value: 5
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -132,13 +132,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
-      - time: .5
+      - time: 2
         value: 5
-        inSlope: 8
-        outSlope: 8
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2

@@ -70,7 +70,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: cd08bfcc31c542a4780b14274934fb5f, type: 2}
+  - {fileID: 7400000, guid: 24d3378cb9281c943a010f35ed75a00d, type: 2}
   m_ParentStateMachine: {fileID: 110794416}
   m_Position: {x: 48, y: 144, z: 0}
   m_IKOnFeet: 0
@@ -83,7 +83,7 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110236508}
+  m_DefaultState: {fileID: 110229882}
   m_States:
   - {fileID: 110236508}
   - {fileID: 110229882}
