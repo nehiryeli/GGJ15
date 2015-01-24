@@ -12,4 +12,9 @@ public class arrow : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 180, 0), Space.Self);
     }
+
+    void OnDestroy()
+    {
+        GameManager.a_onInversTrigger -= Rot_Arrow;
+    }
 }
