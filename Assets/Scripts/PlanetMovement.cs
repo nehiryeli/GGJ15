@@ -14,19 +14,19 @@ public enum Element
     Su,
     Toprak,
     Elektrik,
-	Notr,
+    Notr,
 }
 
 public class Player
 {
-	public Player(KeyCode gelenCekimTusu, KeyCode gelenElementTusu, Pozisyon gelenKose, Element gelenElement)
+    public Player(KeyCode gelenCekimTusu, KeyCode gelenElementTusu, Pozisyon gelenKose, Element gelenElement)
     {
-				cekimTusu = gelenCekimTusu;
-				elementTusu = gelenElementTusu;
-				kose = gelenKose;
-				element = gelenElement;
-				cekimTusuBasildiMi = false;
-		}
+        cekimTusu = gelenCekimTusu;
+        elementTusu = gelenElementTusu;
+        kose = gelenKose;
+        element = gelenElement;
+        cekimTusuBasildiMi = false;
+    }
     public KeyCode cekimTusu
     {
         get;
@@ -42,7 +42,7 @@ public class Player
         get;
         set;
     }
-	public Element element
+    public Element element
     {
         get;
         set;
@@ -63,18 +63,19 @@ public class PlanetMovement : MonoBehaviour
 {
     public float maxPosition = 1.9f;
     Vector3 target;
-	public float ivme = 50f;
-	//private float Hiz = 0;
-	private Vector3 hiz = new Vector3 (0, 0, 0);
+    public float ivme = 50f;
+    //private float Hiz = 0;
+    private Vector3 hiz = new Vector3(0, 0, 0);
     Vector3 direction;
     float oldTime;
     private float friction = 5;
-	float kuraTime ;
-	public bool IsGravityInverse {
-				get;
-				set;
-	}
-	Element[] status = new Element[2];
+    float kuraTime;
+    public bool IsGravityInverse
+    {
+        get;
+        set;
+    }
+    Element[] status = new Element[2];
     // Use this for initialization
     void Start()
     {
@@ -82,8 +83,8 @@ public class PlanetMovement : MonoBehaviour
         transform.position = new Vector3(0, 0, transform.position.z);
         direction = new Vector3(0, 0, transform.position.z);
         oldTime = Time.time;
-		IsGravityInverse = false;
-		kuraTime = 0;
+        IsGravityInverse = false;
+        kuraTime = 0;
     }
 
     // Update is called once per frame
@@ -113,11 +114,14 @@ public class PlanetMovement : MonoBehaviour
         target = new Vector3(0, 0, transform.position.z);
         TargetHesapla();
 
-		if ((target - transform.position).magnitude != 0) {
-			direction = (target - transform.position) / (target - transform.position).magnitude;
-		} else {
-			direction = new Vector3(0,0,0);
-		}
+        if ((target - transform.position).magnitude != 0)
+        {
+            direction = (target - transform.position) / (target - transform.position).magnitude;
+        }
+        else
+        {
+            direction = new Vector3(0, 0, 0);
+        }
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -140,28 +144,33 @@ public class PlanetMovement : MonoBehaviour
         }
         else
         {
-			if(target.x == 0)
-			{
-				if(target.y >maxPosition*Mathf.Sqrt(2)){
-					target.y =maxPosition*Mathf.Sqrt(2);
-				}
-				if(target.y < (-1)*maxPosition*Mathf.Sqrt(2)){
-					target.y = (-1)*maxPosition*Mathf.Sqrt(2);
-				}
-			}
-			if(target.y == 0)
-			{
-				if(target.x >maxPosition*Mathf.Sqrt(2)){
-					target.x =maxPosition*Mathf.Sqrt(2);
-				}
-				if(target.x < (-1)*maxPosition*Mathf.Sqrt(2)){
-					target.x= (-1)*maxPosition*Mathf.Sqrt(2);
-				}
-			}
-			if(IsGravityInverse){
-				target.x *= (-1);
-				target.y *= (-1);
-			}
+            if (target.x == 0)
+            {
+                if (target.y > maxPosition * Mathf.Sqrt(2))
+                {
+                    target.y = maxPosition * Mathf.Sqrt(2);
+                }
+                if (target.y < (-1) * maxPosition * Mathf.Sqrt(2))
+                {
+                    target.y = (-1) * maxPosition * Mathf.Sqrt(2);
+                }
+            }
+            if (target.y == 0)
+            {
+                if (target.x > maxPosition * Mathf.Sqrt(2))
+                {
+                    target.x = maxPosition * Mathf.Sqrt(2);
+                }
+                if (target.x < (-1) * maxPosition * Mathf.Sqrt(2))
+                {
+                    target.x = (-1) * maxPosition * Mathf.Sqrt(2);
+                }
+            }
+            if (IsGravityInverse)
+            {
+                target.x *= (-1);
+                target.y *= (-1);
+            }
         }
     }
 
@@ -183,138 +192,172 @@ public class PlanetMovement : MonoBehaviour
     }
 
     void HareketEttir(Vector3 dir)
-	{float deltaT = Time.time - oldTime;
-		
-		hiz -= hiz * friction *deltaT;
-		if ((target - transform.position).magnitude < (  (deltaT * hiz)).magnitude) {
-			transform.position = target;
-			hiz = new Vector3(0,0,0);
-		}						
-		else
-		{
-			hiz += dir*ivme*deltaT;
-			transform.Translate((deltaT * hiz));
-		}
+    {
+        float deltaT = Time.time - oldTime;
+
+        hiz -= hiz * friction * deltaT;
+        if ((target - transform.position).magnitude < ((deltaT * hiz)).magnitude)
+        {
+            transform.position = target;
+            hiz = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            hiz += dir * ivme * deltaT;
+            transform.Translate((deltaT * hiz));
+        }
     }
 
     public void OnTriggerEnter(Collider c)
     {
-		var m = c.transform.parent.GetComponent<meteor> ();
-
-        switch(m.element)
+        if (c.tag == "elemental")
         {
-            case "fire": break;
-            case "earth": break;
-            case "water": break;
-            case "lightning": break;
-            default:
+            var m = c.transform.parent.GetComponent<meteor>();
+
+            if (!IsElementsEqual(m.element))
                 GameManager.inst.LifeDec();
-                break;
+        }
+        else
+            GameManager.inst.LifeDec();
+    }
+    public void PivotToLeft(int howManyTimes)
+    {
+        var p = GameManager.getPlayers();
+        for (int j = 0; j < howManyTimes; j++)
+        {
+            Pozisyon buffer = p.ToArray()[0].kose;
+            for (int i = 1; i < 4; i++)
+            {
+                p.ToArray()[i - 1].kose = p.ToArray()[i].kose;
+            }
+            p.ToArray()[3].kose = buffer;
         }
     }
-	public void PivotToLeft(int howManyTimes){
-		var p = GameManager.getPlayers();
-		for (int j = 0; j < howManyTimes; j++) {
-			Pozisyon buffer = p.ToArray () [0].kose;
-			for (int i = 1; i <4; i++) {
-				p.ToArray () [i-1].kose = 	p.ToArray () [i].kose; 
-			}
-			p.ToArray () [3].kose = buffer;
-				}
-	}
-	public void PivotToRight(int howManyTimes){
-		var p = GameManager.getPlayers();
-		for (int j = 0; j < howManyTimes; j++) {
-						Pozisyon buffer = p.ToArray () [3].kose;
-						for (int i = 3; i <0; i++) {
-								p.ToArray () [i].kose = p.ToArray () [i - 1].kose; 
-						}
-						p.ToArray () [0].kose = buffer;
-				}
-	}
+    public void PivotToRight(int howManyTimes)
+    {
+        var p = GameManager.getPlayers();
+        for (int j = 0; j < howManyTimes; j++)
+        {
+            Pozisyon buffer = p.ToArray()[3].kose;
+            for (int i = 3; i < 0; i++)
+            {
+                p.ToArray()[i].kose = p.ToArray()[i - 1].kose;
+            }
+            p.ToArray()[0].kose = buffer;
+        }
+    }
 
-	public void ElementBelirle(){
-		var p = GameManager.getPlayers();
-		int ates =0;
-		int su =0;
-		int toprak =0;
-		int elektrik =0;
-		foreach (var item in p) {
-			if(item.element == Element.Ateş){
-				break;
-			}
-			ates++;
-				}
-		foreach (var item in p) {
-			if(item.element == Element.Su){
-				break;
-			}
-			su++;
-		}
-		foreach (var item in p) {
-			if(item.element == Element.Toprak){
-				break;
-			}
-			toprak++;
-		}
-		foreach (var item in p) {
-			if(item.element == Element.Elektrik){
-				break;
-			}
-			elektrik++;
-		}
-		if (p.ToArray () [elektrik].elementTusuBasildiMi ^ p.ToArray () [toprak].elementTusuBasildiMi) {
-			status[0] = Element.Notr;
-				} else if (p.ToArray () [elektrik].elementTusuBasildiMi) {
-			status[0] = Element.Elektrik;
-				} else {
-			status[0] = Element.Toprak;
-				}
-		if (p.ToArray () [ates].elementTusuBasildiMi ^ p.ToArray () [su].elementTusuBasildiMi) {
-			status[1] = Element.Notr;
-		} else if (p.ToArray () [ates].elementTusuBasildiMi) {
-			status[1] = Element.Ateş;
-		} else {
-			status[1] = Element.Su;
-		}
+    public void ElementBelirle()
+    {
+        var p = GameManager.getPlayers();
+        int ates = 0;
+        int su = 0;
+        int toprak = 0;
+        int elektrik = 0;
+        foreach (var item in p)
+        {
+            if (item.element == Element.Ateş)
+            {
+                break;
+            }
+            ates++;
+        }
+        foreach (var item in p)
+        {
+            if (item.element == Element.Su)
+            {
+                break;
+            }
+            su++;
+        }
+        foreach (var item in p)
+        {
+            if (item.element == Element.Toprak)
+            {
+                break;
+            }
+            toprak++;
+        }
+        foreach (var item in p)
+        {
+            if (item.element == Element.Elektrik)
+            {
+                break;
+            }
+            elektrik++;
+        }
+        if (p.ToArray()[elektrik].elementTusuBasildiMi ^ p.ToArray()[toprak].elementTusuBasildiMi)
+        {
+            status[0] = Element.Notr;
+        }
+        else if (p.ToArray()[elektrik].elementTusuBasildiMi)
+        {
+            status[0] = Element.Elektrik;
+        }
+        else
+        {
+            status[0] = Element.Toprak;
+        }
+        if (p.ToArray()[ates].elementTusuBasildiMi ^ p.ToArray()[su].elementTusuBasildiMi)
+        {
+            status[1] = Element.Notr;
+        }
+        else if (p.ToArray()[ates].elementTusuBasildiMi)
+        {
+            status[1] = Element.Ateş;
+        }
+        else
+        {
+            status[1] = Element.Su;
+        }
 
-		}
-	public bool IsElementsEqual(string meteorElementi){
-		switch (meteorElementi) {
-		case "fire":
-			for (int i = 0; i < 2; i++) {
-				if(status[i]== Element.Ateş){
-					return true;
-				}
-			}
-			return false;
-		case "earth": 
-			for (int i = 0; i < 2; i++) {
-				if(status[i]== Element.Toprak){
-					return true;
-				}
+    }
+    public bool IsElementsEqual(string meteorElementi)
+    {
+        switch (meteorElementi)
+        {
+            case "fire":
+                for (int i = 0; i < 2; i++)
+                {
+                    if (status[i] == Element.Ateş)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            case "earth":
+                for (int i = 0; i < 2; i++)
+                {
+                    if (status[i] == Element.Toprak)
+                    {
+                        return true;
+                    }
 
-			}
-			return false;
-		case "water":
-			for (int i = 0; i < 2; i++) {
-				if(status[i]== Element.Su){
-					return true;
-				}
+                }
+                return false;
+            case "water":
+                for (int i = 0; i < 2; i++)
+                {
+                    if (status[i] == Element.Su)
+                    {
+                        return true;
+                    }
 
-			}
-			return false;
-		case "lightning":
-			for (int i = 0; i < 2; i++) {
-				if(status[i]== Element.Elektrik){
-					return true;
-				}
+                }
+                return false;
+            case "lightning":
+                for (int i = 0; i < 2; i++)
+                {
+                    if (status[i] == Element.Elektrik)
+                    {
+                        return true;
+                    }
 
-			}
-			return false;
-				default:
-			return true;
-		}
+                }
+                return false;
+            default:
+                return true;
+        }
 
-	}
+    }
 }
