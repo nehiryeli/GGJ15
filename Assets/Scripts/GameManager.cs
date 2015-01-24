@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager inst;
 
     public enemySpawner eSpawn;
+    public PlanetMovement pMove;
 
     public float
         s_inc;
@@ -31,11 +32,9 @@ public class GameManager : MonoBehaviour
             {
 			    new Player (KeyCode.A, KeyCode.Z, Pozisyon.NW,Element.Ateş),
 			    new Player (KeyCode.G, KeyCode.B, Pozisyon.NE,Element.Elektrik),
-			    new Player (KeyCode.UpArrow, KeyCode.DownArrow, Pozisyon.SE,Element.Su),
-			    new Player (KeyCode.Keypad6, KeyCode.Keypad3, Pozisyon.SW,Element.Toprak)
+			    new Player (KeyCode.UpArrow, KeyCode.DownArrow, Pozisyon.SW,Element.Su),
+			    new Player (KeyCode.Keypad6, KeyCode.Keypad3, Pozisyon.SE,Element.Toprak)
             };
-
-        SwitchPlayers(Direction.Left);
     }
 
     public void LifeDec()
@@ -62,7 +61,18 @@ public class GameManager : MonoBehaviour
 
         eSpawn.spawnTime -= s_inc;
 
-        //enemySpawner.s_inc;
+        var rand = UnityEngine.Random.Range(0, 10);
+
+        pMove.IsGravityInverse = rand < 2;//pMove.IsGravityReverse ? rand < 8 : rand < 2;
+
+        Debug.Log(pMove.IsGravityInverse);
+    }
+
+    void OnGUI()
+    {
+        GUI.color = Color.black;
+
+        GUILayout.Label("-> " + pMove.IsGravityInverse.ToString());
     }
 
     bool l_active = true;
