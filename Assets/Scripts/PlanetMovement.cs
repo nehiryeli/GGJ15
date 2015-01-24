@@ -286,7 +286,7 @@ public class PlanetMovement : MonoBehaviour
             }
             elektrik++;
         }
-        if (p.ToArray()[elektrik].elementTusuBasildiMi ^ p.ToArray()[toprak].elementTusuBasildiMi)
+        if (p.ToArray()[elektrik].elementTusuBasildiMi ^ p.ToArray()[toprak].elementTusuBasildiMi == false)
         {
             status[0] = Element.Notr;
         }
@@ -298,7 +298,7 @@ public class PlanetMovement : MonoBehaviour
         {
             status[0] = Element.Toprak;
         }
-        if (p.ToArray()[ates].elementTusuBasildiMi ^ p.ToArray()[su].elementTusuBasildiMi)
+		if (p.ToArray()[ates].elementTusuBasildiMi ^ p.ToArray()[su].elementTusuBasildiMi== false)
         {
             status[1] = Element.Notr;
         }
