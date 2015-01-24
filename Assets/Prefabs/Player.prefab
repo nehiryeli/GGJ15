@@ -27,6 +27,7 @@ GameObject:
   - 33: {fileID: 3349292}
   - 23: {fileID: 2349292}
   - 111: {fileID: 11149292}
+  - 135: {fileID: 13542894}
   m_Layer: 0
   m_Name: gezegen
   m_TagString: Untagged
@@ -114,6 +115,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPosition: 1.89999998
   Hiz: 20
+--- !u!135 &13542894
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .460238695
+  m_Center: {x: -.0162911564, y: .0130409896, z: .00425933301}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
