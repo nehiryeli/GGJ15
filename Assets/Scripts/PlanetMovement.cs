@@ -59,7 +59,7 @@ public class Player
 }
 public class PlanetMovement : MonoBehaviour
 {
-    const int maxPosition = 20;
+    public int maxPosition = 20;
     Vector3 target;
     public float Hiz = 100;
     Vector3 direction;
