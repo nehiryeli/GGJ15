@@ -1,16 +1,40 @@
 fileFormatVersion: 2
-guid: 8b127bffa47e2bf46b7f061efe245d4e
+guid: 8aed3826cc3ba8040a57d0ce0e95cc07
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pCube3
+    100004: pCube4
+    100006: pCube5
+    100008: pCylinder6
+    100010: pPipe12
+    100012: pPipe13
+    100014: pPipe14
+    100016: transform13
+    100018: transform14
+    100020: transform15
+    100022: transform16
+    100024: transform17
+    100026: transform18
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pSphere1
-    7400000: Take 001
+    400002: pCube3
+    400004: pCube4
+    400006: pCube5
+    400008: pCylinder6
+    400010: pPipe12
+    400012: pPipe13
+    400014: pPipe14
+    400016: transform13
+    400018: transform14
+    400020: transform15
+    400022: transform16
+    400024: transform17
+    400026: transform18
+    2300000: pCube5
+    3300000: pCube5
+    4300000: pCube5
     9500000: //RootNode
-    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -26,39 +50,11 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Take 001
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 60
-      wrapMode: 2
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 1
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .400000006
+    globalScale: .319999993
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -90,6 +86,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   additionalBone: 0
   userData: 

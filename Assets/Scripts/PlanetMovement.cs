@@ -59,7 +59,7 @@ public class Player
 }
 public class PlanetMovement : MonoBehaviour
 {
-    public int maxPosition = 20;
+    public float maxPosition = 20;
     Vector3 target;
     public float Hiz = 100;
     Vector3 direction;
