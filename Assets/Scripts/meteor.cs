@@ -43,6 +43,7 @@ public class meteor : MonoBehaviour
         transform.position = Vector3.Lerp(new Vector3(0, 0, 100), new Vector3(0, 0, -10), position);
         if (position > 1)
         {
+            GameManager.inst.MeteorDestroyed();
             Destroy(gameObject);
         }
         if (position > 0.9f)

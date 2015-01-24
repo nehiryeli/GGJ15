@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         onLifeChanged;
 
     public int lives = 3;
+    public int score = 0;
 
     IEnumerator Start()
     {
@@ -58,6 +59,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void MeteorDestroyed()
+    {
+        if(l_active)
+        {
+            score += 5;
+        }
+    }
+
     bool l_active = true;
     IEnumerator waitForLive()
     {
@@ -70,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         return inst.players;
     }
+
     public static void SwitchPlayers(Direction d)
     {
         var l_p = inst.players.Count - 1;
