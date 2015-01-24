@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class arrow : MonoBehaviour {
+public class arrow : MonoBehaviour
+{
+    void Awake()
+    {
+        GameManager.a_onInversTrigger += Rot_Arrow;
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Rot_Arrow()
+    {
+        transform.Rotate(new Vector3(0, 180, 0), Space.Self);
+    }
 }

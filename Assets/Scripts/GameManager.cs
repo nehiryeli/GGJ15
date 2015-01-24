@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager inst;
+	public string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
 
     public enemySpawner eSpawn;
     public PlanetMovement pMove;
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
 
     public static Action
         a_onGameStart,
-        a_onGameEnd;
+        a_onGameEnd,
+        a_onInversTrigger;
 
     public static Action<int>
         onScoreUpdated,
@@ -65,15 +67,19 @@ public class GameManager : MonoBehaviour
 
         var rand = UnityEngine.Random.Range(0, 10);
 
+        var bq = pMove.IsGravityInverse;
         pMove.IsGravityInverse = rand < 2;
+
+        if (bq != pMove.IsGravityInverse)
+            if (a_onInversTrigger != null)
+                a_onInversTrigger();
     }
 
-    void OnGUI()
+    /*void OnGUI()
     {
         GUI.color = Color.black;
-
         GUILayout.Label("->  " + pMove.IsGravityInverse.ToString());
-    }
+    }*/
 
     bool l_active = true;
     IEnumerator waitForLive()
