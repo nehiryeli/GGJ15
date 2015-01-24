@@ -9,6 +9,7 @@ public class meteor : MonoBehaviour
     Renderer[] placeholder;
     //List<string> elements = new List<string>();
 	public string element;
+	public Material[] mat_elem;
 
 
 
@@ -29,7 +30,10 @@ public class meteor : MonoBehaviour
             //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
         }
       	
-        parts[partToRemove].gameObject.SetActive(false);
+		parts [partToRemove].gameObject.renderer.tag = "elemental";
+		if (elementIndex >= GameManager.inst.elementsList.Length)
+						elementIndex--;
+		parts [partToRemove].gameObject.renderer.material = mat_elem [elementIndex];
     }
 
     void Update()
