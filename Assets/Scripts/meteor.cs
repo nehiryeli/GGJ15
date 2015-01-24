@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class meteor : MonoBehaviour
 {
     float position = 0;
     public float speed = 5f;
     public Transform[] parts;
     Renderer[] placeholder;
+    //List<string> elements = new List<string>();
+    public string[] elements = new string[2];
+
+    string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
+
 
     // Use this for initialization
     void Start()
@@ -18,10 +23,21 @@ public class meteor : MonoBehaviour
     void generator()
     {
         int partToRemove = Random.Range(0, parts.Length);
+        int elementIndex = Random.Range(0, 5);
+        if (elementIndex != 4)
+        {//son elemen elementsiz parçayı gösterir
+            this.elements[0] = elementsList[elementIndex];
+            //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
+        }
+        elementIndex = Random.Range(0, 5);
+        if (elementIndex != 4)
+        {//son elemen elementsiz parçayı gösterir
+            this.elements[1] = elementsList[elementIndex];
+            //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
+        }
         parts[partToRemove].gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         position += Time.deltaTime / speed;
