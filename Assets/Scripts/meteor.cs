@@ -12,8 +12,6 @@ public class meteor : MonoBehaviour
 
     string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
 
-
-    // Use this for initialization
     void Start()
     {
         generator();
