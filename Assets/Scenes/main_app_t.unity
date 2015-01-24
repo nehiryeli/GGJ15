@@ -1191,7 +1191,7 @@ MonoBehaviour:
   - water
   - lightning
   - earth
-  scorePW: {fileID: 0}
+  scorePW: {fileID: 1423723229}
   eSpawn: {fileID: 808576508}
   pMove: {fileID: 1159363281}
   s_inc: .100000001
@@ -2925,7 +2925,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
