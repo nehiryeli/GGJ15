@@ -286,33 +286,35 @@ public class PlanetMovement : MonoBehaviour
 				if(status[i]== Element.Ateş){
 					return true;
 				}
-				return false;
 			}
+			return false;
 		case "earth": 
 			for (int i = 0; i < 2; i++) {
 				if(status[i]== Element.Toprak){
 					return true;
 				}
-				return false;
+
 			}
+			return false;
 		case "water":
 			for (int i = 0; i < 2; i++) {
 				if(status[i]== Element.Su){
 					return true;
 				}
-				return false;
+
 			}
+			return false;
 		case "lightning":
 			for (int i = 0; i < 2; i++) {
 				if(status[i]== Element.Elektrik){
 					return true;
 				}
-				return false;
+
 			}
+			return false;
 				default:
 			return true;
 		}
 
 	}
-
 }
