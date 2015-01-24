@@ -18,6 +18,12 @@ public class GuiManager : MonoBehaviour
         _transform = transform;
         GameManager.onScoreUpdated += OnScoreUpdated;
         GameManager.onLifeChanged += OnLifeChanged;
+
+        _lives = new GameObject[livesParent.childCount];
+        for (int i = 0; i < livesParent.childCount; i++)
+        {
+            _lives[i] = livesParent.GetChild(i).gameObject;
+        }
     }
     void OnScoreUpdated(int score)
     {
@@ -28,11 +34,9 @@ public class GuiManager : MonoBehaviour
     {
         for (int i = 0; i < livesParent.childCount; i++)
         {
-            if (i > livesLeft - 1)
-            {
-                livesParent.GetChild(i).GetComponent<Animator>().SetTrigger("LifeLost");
-            }
-        } 
+            if (i > livesLeft - 1) livesParent.GetChild(i).gameObject.SetActive(false);
+            else livesParent.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
     void Update()
