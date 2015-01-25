@@ -283,7 +283,7 @@ public class PlanetMovement : MonoBehaviour
             p.ToArray()[0].element = buffer;
         }
     }
-    public List<int> PozisyondaHataYapanlarKimler(int emptyPartID)
+	public List<int> HataYapanlarKimler(int emptyPartID,string meteorElementi)
     {
         var p = GameManager.getPlayers();
         bool[] pozisyonArray = new bool[4];
@@ -360,6 +360,27 @@ public class PlanetMovement : MonoBehaviour
         {
             kimler.Add(p.Find(x => x.kose == Pozisyon.SW));
         }
+		switch (meteorElementi)
+		{
+		case "fire":
+			if(status != Element.Ateş)
+				idNumbers.Add(p.FindIndex(x => x.element ==Element.Ateş));
+			break;
+		case "earth":
+			if(status != Element.Toprak)
+				idNumbers.Add(p.FindIndex(x => x.element ==Element.Toprak));
+			break;
+		case "water":
+			if(status != Element.Su)
+				idNumbers.Add(p.FindIndex(x => x.element ==Element.Su));
+			break;
+		case "lightning":
+			if(status != Element.Elektrik)
+				idNumbers.Add(p.FindIndex(x => x.element ==Element.Elektrik));
+			break;
+		default:
+			break;
+		}
         foreach (var item in kimler)
         {
             idNumbers.Add(p.FindIndex(x => x.kose == item.kose));

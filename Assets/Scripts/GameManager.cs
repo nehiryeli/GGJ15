@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             if (pMove != null && l_met != null)
             {
-                var bad_mv = pMove.PozisyondaHataYapanlarKimler(l_met.partToRemove);
+                var bad_mv = pMove.HataYapanlarKimler(l_met.partToRemove, l_met.element);
 
                 var str = "";
 
