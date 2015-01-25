@@ -3,6 +3,7 @@ using System.Collections;
 
 public class livesTest : MonoBehaviour
 {
+    public GameObject[] lives;
     void Start()
     {
         GameManager.onLifeChanged += life;
@@ -10,7 +11,7 @@ public class livesTest : MonoBehaviour
 
     void life(int i)
     {
-        if (transform.GetChild(i) != null)
-            transform.GetChild(i).gameObject.SetActive(false);
+        if (lives[i] != null)
+            lives[i].SetActive(false);
     }
 }

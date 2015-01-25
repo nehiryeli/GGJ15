@@ -79,12 +79,6 @@ public class GameManager : MonoBehaviour
                 a_onInversTrigger();
     }
 
-    /*void OnGUI()
-    {
-        GUI.color = Color.black;
-        GUILayout.Label("->  " + pMove.IsGravityInverse.ToString());
-    }*/
-
     bool l_active = true;
     IEnumerator waitForLive()
     {
