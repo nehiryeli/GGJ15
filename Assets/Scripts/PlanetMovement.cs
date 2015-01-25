@@ -72,13 +72,12 @@ public class PlanetMovement : MonoBehaviour
     Vector3 direction;
     float oldTime;
     private float friction = 5;
-    float kuraTime;
     public bool IsGravityInverse
     {
         get;
         set;
     }
-    Element[] status = new Element[2];
+    public Element status ;
     // Use this for initialization
     void Start()
     {
@@ -87,7 +86,6 @@ public class PlanetMovement : MonoBehaviour
         direction = new Vector3(0, 0, transform.position.z);
         oldTime = Time.time;
         IsGravityInverse = false;
-        kuraTime = 0;
     }
 
     // Update is called once per frame
@@ -109,14 +107,15 @@ public class PlanetMovement : MonoBehaviour
             {
                 if (elementalCh != null)
                     elementalCh();
-                item.elementTusuBasildiMi = true;
-            }
+				status = item.element;
+               // item.elementTusuBasildiMi = true;
+            }/*
             if (Input.GetKeyUp(item.elementTusu))
             {
                 if (elementalCh != null)
                     elementalCh();
                 item.elementTusuBasildiMi = false;
-            }
+            }*/
         }
         target = new Vector3(0, 0, transform.position.z);
         TargetHesapla();
@@ -129,11 +128,8 @@ public class PlanetMovement : MonoBehaviour
         {
             direction = new Vector3(0, 0, 0);
         }
-        ElementBelirle();
-        ///Debug.Log(System.Convert.ToString(status[0]) + "   " + System.Convert.ToString(status[1]));
-        //Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].elementTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].elementTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].elementTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].elementTusuBasildiMi));
-        //Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].cekimTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].cekimTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].cekimTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].cekimTusuBasildiMi));
-
+        //ElementBelirle();
+        
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -290,6 +286,7 @@ public class PlanetMovement : MonoBehaviour
     {
         var p = GameManager.getPlayers();
         bool[] pozisyonArray = new bool[4];
+		bool[] elementArray = new bool[4];
         List<Player> kimler = new List<Player>();
         List<int> idNumbers = new List<int>();
         switch (emptyPartID)
@@ -368,7 +365,7 @@ public class PlanetMovement : MonoBehaviour
         }
         return idNumbers;
     }
-
+	/*
     public void ElementBelirle()
     {
         var p = GameManager.getPlayers();
@@ -396,7 +393,54 @@ public class PlanetMovement : MonoBehaviour
         {
             status[1] = Element.Notr;
         }
-    }
+    }*/
+	public bool IsElementsEqual(string meteorElementi){
+		switch (meteorElementi)
+		{
+		case "fire":
+			for (int i = 0; i < 2; i++)
+			{
+				if (status == Element.Ateş)
+				{
+					return true;
+				}
+			}
+			return false;
+		case "earth":
+			for (int i = 0; i < 2; i++)
+			{
+				if (status == Element.Toprak)
+				{
+					return true;
+				}
+				
+			}
+			return false;
+		case "water":
+			for (int i = 0; i < 2; i++)
+			{
+				if (status == Element.Su)
+				{
+					return true;
+				}
+				
+			}
+			return false;
+		case "lightning":
+			for (int i = 0; i < 2; i++)
+			{
+				if (status == Element.Elektrik)
+				{
+					return true;
+				}
+				
+			}
+			return false;
+		default:
+			return true;
+		}
+	}
+	/*
     public bool IsElementsEqual(string meteorElementi)
     {
         switch (meteorElementi)
@@ -444,5 +488,5 @@ public class PlanetMovement : MonoBehaviour
                 return true;
         }
 
-    }
+    }*/
 }
