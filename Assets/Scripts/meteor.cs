@@ -29,11 +29,10 @@ public class meteor : MonoBehaviour
 			element = GameManager.inst.elementsList[elementIndex];
             //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
         }
-		Debug.Log (elementIndex);
 			
-		if (elementIndex + 1 < GameManager.inst.elementsList.Length) {
-				parts [partToRemove].gameObject.renderer.tag = "elemental";
-				parts [partToRemove].gameObject.renderer.material = mat_elem [elementIndex];
+		if (elementIndex + 1 <= GameManager.inst.elementsList.Length) {
+			parts [elementIndex].gameObject.renderer.tag = "elemental";
+			parts [elementIndex].gameObject.renderer.material = mat_elem [elementIndex];
 		} else {
 			parts [partToRemove].gameObject.SetActive(false);
 		}
