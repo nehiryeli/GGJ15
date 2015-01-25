@@ -12,6 +12,9 @@ public class meteor : MonoBehaviour
 	public Material[] mat_elem;
 	//public Shader shader2 = Shader.Find("Transparent/Bumped Spectecular");
 
+    [HideInInspector]
+    public
+        int partToRemove = -1;
 
     void Start()
     {
@@ -21,8 +24,7 @@ public class meteor : MonoBehaviour
 
     void generator()
     {
-
-        int partToRemove = Random.Range(0, parts.Length);
+        partToRemove = Random.Range(0, parts.Length);
         int elementIndex = Random.Range(0, 5);
         if (elementIndex != 4 && GameManager.inst.score > GameManager.inst.score_for_harder_game)
         {//son elemen elementsiz parçayı gösterir
@@ -47,7 +49,7 @@ public class meteor : MonoBehaviour
         transform.position = Vector3.Lerp(new Vector3(0, 0, 100), new Vector3(0, 0, -10), position);
         if (position > 1)
         {
-            GameManager.inst.MeteorDestroyed();
+            GameManager.inst.MeteorDestroyed(this);
             Destroy(gameObject);
         }
         if (position > 0.9f)

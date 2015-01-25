@@ -122,10 +122,10 @@ public class PlanetMovement : MonoBehaviour
         {
             direction = new Vector3(0, 0, 0);
         }
-		ElementBelirle ();		
-		Debug.Log (System.Convert.ToString (status[0])+"   "+System.Convert.ToString (status[1]));
-		//Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].elementTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].elementTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].elementTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].elementTusuBasildiMi));
-		//Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].cekimTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].cekimTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].cekimTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].cekimTusuBasildiMi));
+        ElementBelirle();
+        ///Debug.Log(System.Convert.ToString(status[0]) + "   " + System.Convert.ToString(status[1]));
+        //Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].elementTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].elementTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].elementTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].elementTusuBasildiMi));
+        //Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].cekimTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].cekimTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].cekimTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].cekimTusuBasildiMi));
 
         HareketEttir(direction);
         oldTime = Time.time;
@@ -215,9 +215,11 @@ public class PlanetMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider c)
     {
+        var m = c.transform.parent.GetComponent<meteor>();
+        GameManager.inst.Rem_Met(m);
+
         if (c.tag == "elemental")
         {
-            var m = c.transform.parent.GetComponent<meteor>();
 
             if (!IsElementsEqual(m.element))
                 GameManager.inst.LifeDec();
@@ -238,7 +240,7 @@ public class PlanetMovement : MonoBehaviour
             p.ToArray()[3].kose = buffer;
         }
     }
-	public void PivotPositionToRight(int howManyTimes)
+    public void PivotPositionToRight(int howManyTimes)
     {
         var p = GameManager.getPlayers();
         for (int j = 0; j < howManyTimes; j++)
@@ -251,125 +253,142 @@ public class PlanetMovement : MonoBehaviour
             p.ToArray()[0].kose = buffer;
         }
     }
-	public void PivotElementToLeft(int howManyTimes)
-	{
-		var p = GameManager.getPlayers();
-		for (int j = 0; j < howManyTimes; j++)
-		{
-			Element buffer = p.ToArray()[0].element;
-			for (int i = 1; i < 4; i++)
-			{
-				p.ToArray()[i - 1].element = p.ToArray()[i].element;
-			}
-			p.ToArray()[3].element = buffer;
-		}
-	}
-	public void PivotElementToRight(int howManyTimes)
-	{
-		var p = GameManager.getPlayers();
-		for (int j = 0; j < howManyTimes; j++)
-		{
-			Element buffer = p.ToArray()[3].element;
-			for (int i = 3; i < 0; i++)
-			{
-				p.ToArray()[i].element = p.ToArray()[i - 1].element;
-			}
-			p.ToArray()[0].element = buffer;
-		}
-	}
-	public List<int> PozisyondaHataYapanlarKimler(int emptyPartID){
-		var p = GameManager.getPlayers();
-		bool[] pozisyonArray = new bool[4];
-		List<Player> kimler ;
-		List<int> idNumbers ;
-		switch (emptyPartID) {
-		case 0:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= false;
-			break;
-		case 1:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= false;
-			break;
-		case 2:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= false;
-			break;
-		case 3:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= false;
-			break;
-		case 4:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= true;
-			break;
-		case 5:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= true;
-			break;
-		case 6:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= true;
-			break;
-		case 7:
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]= true;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]= false;
-			pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]= false;
-			break;
-		default:
-			break;
-		}
+    public void PivotElementToLeft(int howManyTimes)
+    {
+        var p = GameManager.getPlayers();
+        for (int j = 0; j < howManyTimes; j++)
+        {
+            Element buffer = p.ToArray()[0].element;
+            for (int i = 1; i < 4; i++)
+            {
+                p.ToArray()[i - 1].element = p.ToArray()[i].element;
+            }
+            p.ToArray()[3].element = buffer;
+        }
+    }
+    public void PivotElementToRight(int howManyTimes)
+    {
+        var p = GameManager.getPlayers();
+        for (int j = 0; j < howManyTimes; j++)
+        {
+            Element buffer = p.ToArray()[3].element;
+            for (int i = 3; i < 0; i++)
+            {
+                p.ToArray()[i].element = p.ToArray()[i - 1].element;
+            }
+            p.ToArray()[0].element = buffer;
+        }
+    }
+    public List<int> PozisyondaHataYapanlarKimler(int emptyPartID)
+    {
+        var p = GameManager.getPlayers();
+        bool[] pozisyonArray = new bool[4];
+        List<Player> kimler = new List<Player>();
+        List<int> idNumbers = new List<int>();
+        switch (emptyPartID)
+        {
+            case 0:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = false;
+                break;
+            case 1:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = false;
+                break;
+            case 2:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = false;
+                break;
+            case 3:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = false;
+                break;
+            case 4:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = true;
+                break;
+            case 5:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = true;
+                break;
+            case 6:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = true;
+                break;
+            case 7:
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)] = true;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)] = false;
+                pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)] = false;
+                break;
+            default:
+                break;
+        }
 
-		if(	p.Find (x => x.kose == Pozisyon.NW).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)]){
-			kimler.Add(p.Find (x => x.kose == Pozisyon.NW));
-		}
-		if(	p.Find (x => x.kose == Pozisyon.NE).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)]){
-			kimler.Add(p.Find (x => x.kose == Pozisyon.NE));
-		}
-		if(	p.Find (x => x.kose == Pozisyon.SE).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)]){
-			kimler.Add(p.Find (x => x.kose == Pozisyon.SE));
-		}
-		if(	p.Find (x => x.kose == Pozisyon.SW).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)]){
-			kimler.Add(p.Find (x => x.kose == Pozisyon.SW));
-		}
-		foreach (var item in kimler) {
-			idNumbers.Add( p.FindIndex(x => x.kose == item.kose));
-				}
-		return idNumbers;
-		} 
+        if (p.Find(x => x.kose == Pozisyon.NW).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NW)])
+        {
+            kimler.Add(p.Find(x => x.kose == Pozisyon.NW));
+        }
+        if (p.Find(x => x.kose == Pozisyon.NE).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.NE)])
+        {
+            kimler.Add(p.Find(x => x.kose == Pozisyon.NE));
+        }
+        if (p.Find(x => x.kose == Pozisyon.SE).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SE)])
+        {
+            kimler.Add(p.Find(x => x.kose == Pozisyon.SE));
+        }
+        if (p.Find(x => x.kose == Pozisyon.SW).cekimTusuBasildiMi != pozisyonArray[p.FindIndex(x => x.kose == Pozisyon.SW)])
+        {
+            kimler.Add(p.Find(x => x.kose == Pozisyon.SW));
+        }
+        foreach (var item in kimler)
+        {
+            idNumbers.Add(p.FindIndex(x => x.kose == item.kose));
+        }
+        return idNumbers;
+    }
 
     public void ElementBelirle()
     {
         var p = GameManager.getPlayers();
-		if (p.Find (x => x.element == Element.Elektrik).elementTusuBasildiMi == true && p.Find (x => x.element == Element.Toprak).elementTusuBasildiMi == false) {
-						status [0] = Element.Elektrik;
-				} else if (p.Find (x => x.element == Element.Elektrik).elementTusuBasildiMi == false && p.Find (x => x.element == Element.Toprak).elementTusuBasildiMi == true) {
-						status [0] = Element.Toprak;
-				} else {
-			status [0] = Element.Notr;
-				}
-		if (p.Find (x => x.element == Element.Ateş).elementTusuBasildiMi == true && p.Find (x => x.element == Element.Su).elementTusuBasildiMi == false) {
-			status [1] = Element.Ateş;
-		} else if (p.Find (x => x.element == Element.Ateş).elementTusuBasildiMi == false && p.Find (x => x.element == Element.Su).elementTusuBasildiMi == true) {
-			status [1] = Element.Su;
-		} else {
-			status [1] = Element.Notr;
-		}
+        if (p.Find(x => x.element == Element.Elektrik).elementTusuBasildiMi == true && p.Find(x => x.element == Element.Toprak).elementTusuBasildiMi == false)
+        {
+            status[0] = Element.Elektrik;
+        }
+        else if (p.Find(x => x.element == Element.Elektrik).elementTusuBasildiMi == false && p.Find(x => x.element == Element.Toprak).elementTusuBasildiMi == true)
+        {
+            status[0] = Element.Toprak;
+        }
+        else
+        {
+            status[0] = Element.Notr;
+        }
+        if (p.Find(x => x.element == Element.Ateş).elementTusuBasildiMi == true && p.Find(x => x.element == Element.Su).elementTusuBasildiMi == false)
+        {
+            status[1] = Element.Ateş;
+        }
+        else if (p.Find(x => x.element == Element.Ateş).elementTusuBasildiMi == false && p.Find(x => x.element == Element.Su).elementTusuBasildiMi == true)
+        {
+            status[1] = Element.Su;
+        }
+        else
+        {
+            status[1] = Element.Notr;
+        }
     }
     public bool IsElementsEqual(string meteorElementi)
     {

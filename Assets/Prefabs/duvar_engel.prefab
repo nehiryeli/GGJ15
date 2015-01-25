@@ -264,7 +264,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: .587937832, y: .392847478, z: .392847478, w: .587937832}
-  m_LocalPosition: {x: -4.98397303, y: -2.41279578, z: 10.4456635}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400014}
@@ -625,20 +625,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   parts:
-  - {fileID: 400006}
-  - {fileID: 400014}
-  - {fileID: 400012}
-  - {fileID: 400010}
-  - {fileID: 400008}
   - {fileID: 400000}
-  - {fileID: 400002}
+  - {fileID: 400008}
+  - {fileID: 400010}
+  - {fileID: 400012}
+  - {fileID: 400014}
+  - {fileID: 400006}
   - {fileID: 400004}
+  - {fileID: 400002}
   element: 
   mat_elem:
   - {fileID: 2100000, guid: 974b5cf30912447e09a047db0aea205f, type: 2}
   - {fileID: 2100000, guid: ade445f6226ec477f997b00c2f1f0f3f, type: 2}
   - {fileID: 2100000, guid: e7e9c1d3b48b746cf8f37029f77674ed, type: 2}
   - {fileID: 2100000, guid: 7b9e73d3359484662aa9a9c47148e5d0, type: 2}
+  partToRemove: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
