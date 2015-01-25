@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 449292}
   - 114: {fileID: 11449292}
   - 54: {fileID: 5466096}
+  - 114: {fileID: 11439420}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -854,6 +855,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11439420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31b1a29acb8f6149aac69b8f01a2ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 165242}
+  water: {fileID: 165232}
+  earth: {fileID: 165230}
+  elect: {fileID: 165234}
+  m_fire: {fileID: 2100000, guid: 87dee7dbdc7b34bbbb9aa68dd0443638, type: 2}
+  m_water: {fileID: 2100000, guid: 7a0e852739f094c2483d8befaa42940a, type: 2}
+  m_earth: {fileID: 2100000, guid: 81c261350316e47bfb41e50ca22910b3, type: 2}
+  m_elect: {fileID: 2100000, guid: 96884515dcda644ae8ad4eca582dbdb9, type: 2}
+  m_def: {fileID: 2100000, guid: bf71c2e0d060a4a19957a01df8d19d2d, type: 2}
+  target_r: {fileID: 2349292}
 --- !u!114 &11449292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -867,6 +889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPosition: 1.89999998
   ivme: 50
+  status: 0
 --- !u!135 &13542894
 SphereCollider:
   m_ObjectHideFlags: 1
