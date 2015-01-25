@@ -506,6 +506,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 414850040}
   - 212: {fileID: 414850039}
+  - 114: {fileID: 414850041}
   m_Layer: 0
   m_Name: orion-nebula-hd-wallpaper-2560x1600
   m_TagString: Untagged
@@ -547,6 +548,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!114 &414850041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414850038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b9de1c1908b1743b95dac7c0fee708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lim: 3
 --- !u!1 &421206216
 GameObject:
   m_ObjectHideFlags: 0
