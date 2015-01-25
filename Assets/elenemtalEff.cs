@@ -3,15 +3,24 @@ using System.Collections;
 
 public class elenemtalEff : MonoBehaviour
 {
-    public Transform[] elems;
+    public Transform
+        fire,
+        water,
+        earth,
+        elect;
 
 	void Start ()
     {
-        //bind
+        PlanetMovement.elementalCh += Effect;
 	}
+
+    public void Effect()
+    {
+
+    }
 
     void OnDestroy()
     {
-        //unbind
+        PlanetMovement.elementalCh -= Effect;
     }
 }

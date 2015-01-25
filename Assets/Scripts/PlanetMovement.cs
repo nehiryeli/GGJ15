@@ -61,6 +61,9 @@ public class Player
 }
 public class PlanetMovement : MonoBehaviour
 {
+    public static System.Action
+        elementalCh;
+
     public float maxPosition = 1.9f;
     Vector3 target;
     public float ivme = 50f;
@@ -104,10 +107,14 @@ public class PlanetMovement : MonoBehaviour
             }
             if (Input.GetKeyDown(item.elementTusu))
             {
+                if (elementalCh != null)
+                    elementalCh();
                 item.elementTusuBasildiMi = true;
             }
             if (Input.GetKeyUp(item.elementTusu))
             {
+                if (elementalCh != null)
+                    elementalCh();
                 item.elementTusuBasildiMi = false;
             }
         }
