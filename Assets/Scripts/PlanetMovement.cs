@@ -122,7 +122,11 @@ public class PlanetMovement : MonoBehaviour
         {
             direction = new Vector3(0, 0, 0);
         }
-		ElementBelirle ();
+		ElementBelirle ();		
+		Debug.Log (System.Convert.ToString (status[0])+"   "+System.Convert.ToString (status[1]));
+		//Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].elementTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].elementTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].elementTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].elementTusuBasildiMi));
+		//Debug.Log ("P1 : "+System.Convert.ToString (p.ToArray()[0].cekimTusuBasildiMi)+"P2 : "+System.Convert.ToString (p.ToArray()[1].cekimTusuBasildiMi)+"P3 : "+System.Convert.ToString (p.ToArray()[2].cekimTusuBasildiMi)+"P4 : "+System.Convert.ToString (p.ToArray()[3].cekimTusuBasildiMi));
+
         HareketEttir(direction);
         oldTime = Time.time;
     }
@@ -251,71 +255,23 @@ public class PlanetMovement : MonoBehaviour
     public void ElementBelirle()
     {
         var p = GameManager.getPlayers();
-        int ates = 0;
-        int su = 0;
-        int toprak = 0;
-        int elektrik = 0;
-        foreach (var item in p)
-        {
-            if (item.element == Element.Ateş)
-            {
-                break;
-            }
-            ates++;
-        }
-        foreach (var item in p)
-        {
-            if (item.element == Element.Su)
-            {
-                break;
-            }
-            su++;
-        }
-        foreach (var item in p)
-        {
-            if (item.element == Element.Toprak)
-            {
-                break;
-            }
-            toprak++;
-        }
-        foreach (var item in p)
-        {
-            if (item.element == Element.Elektrik)
-            {
-                break;
-            }
-            elektrik++;
-        }
-        if (p.ToArray()[elektrik].elementTusuBasildiMi ^ p.ToArray()[toprak].elementTusuBasildiMi == false)
-        {
-            status[0] = Element.Notr;
-        }
-        else if (p.ToArray()[elektrik].elementTusuBasildiMi)
-        {
-            status[0] = Element.Elektrik;
-        }
-        else
-        {
-            status[0] = Element.Toprak;
-        }
-		if (p.ToArray()[ates].elementTusuBasildiMi ^ p.ToArray()[su].elementTusuBasildiMi== false)
-        {
-            status[1] = Element.Notr;
-        }
-        else if (p.ToArray()[ates].elementTusuBasildiMi)
-        {
-            status[1] = Element.Ateş;
-        }
-        else
-        {
-            status[1] = Element.Su;
-        }
-
+		if (p.Find (x => x.element == Element.Elektrik).elementTusuBasildiMi == true && p.Find (x => x.element == Element.Toprak).elementTusuBasildiMi == false) {
+						status [0] = Element.Elektrik;
+				} else if (p.Find (x => x.element == Element.Elektrik).elementTusuBasildiMi == false && p.Find (x => x.element == Element.Toprak).elementTusuBasildiMi == true) {
+						status [0] = Element.Toprak;
+				} else {
+			status [0] = Element.Notr;
+				}
+		if (p.Find (x => x.element == Element.Ateş).elementTusuBasildiMi == true && p.Find (x => x.element == Element.Su).elementTusuBasildiMi == false) {
+			status [1] = Element.Ateş;
+		} else if (p.Find (x => x.element == Element.Ateş).elementTusuBasildiMi == false && p.Find (x => x.element == Element.Su).elementTusuBasildiMi == true) {
+			status [1] = Element.Su;
+		} else {
+			status [1] = Element.Notr;
+		}
     }
     public bool IsElementsEqual(string meteorElementi)
     {
-		Debug.Log (System.Convert.ToString (status[0])+System.Convert.ToString (status[1]));
         switch (meteorElementi)
         {
             case "fire":
