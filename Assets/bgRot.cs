@@ -4,7 +4,7 @@ using System.Collections;
 public class bgRot : MonoBehaviour
 {
     public float lim;
-	public float duration = 3;
+	public float duration = 40;
     Transform t;
 
     IEnumerator Start()
