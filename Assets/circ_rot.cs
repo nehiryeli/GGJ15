@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class circ_rot : MonoBehaviour {
+public class circ_rot : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
+        //targetAngle = 0f;
+        //positionChange();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    /*public void positionChange()
+    {
+        GameManager.inst.pMove.PivotPositionToLeft(1);
+        transform.Rotate(0, 0, 90, Space.World);
+    }*/
 }

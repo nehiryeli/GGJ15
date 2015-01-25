@@ -37,7 +37,7 @@ public class elenemtalEff : MonoBehaviour
         switch (GameManager.inst.pMove.status)
         {
             case Element.Ateş:
-                au_src.PlayOneShot(a_fire);
+                //au_src.PlayOneShot(a_fire);
                 target_r.material = m_fire;
                 fire.SetActive(true);
                 water.SetActive(false);
@@ -45,7 +45,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Su:
-                au_src.PlayOneShot(a_water);
+                //au_src.PlayOneShot(a_water);
                 target_r.material = m_water;
                 fire.SetActive(false);
                 water.SetActive(true);
@@ -53,7 +53,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Toprak:
-                au_src.PlayOneShot(a_earth);
+                //au_src.PlayOneShot(a_earth);
                 target_r.material = m_earth;
                 fire.SetActive(false);
                 water.SetActive(false);
@@ -61,7 +61,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Elektrik:
-                au_src.PlayOneShot(a_elect);
+                //au_src.PlayOneShot(a_elect);
                 target_r.material = m_elect;
                 fire.SetActive(false);
                 water.SetActive(false);

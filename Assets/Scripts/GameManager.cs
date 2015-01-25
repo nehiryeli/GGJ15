@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float
         s_inc;
 
-    List<Player> players;
+    public List<Player> players;
 
     public static Action
         a_onGameStart,
