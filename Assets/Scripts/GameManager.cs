@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager inst;
-	public string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
+    public string[] elementsList = new string[] { "fire", "water", "lightning", "earth" };
 
     public Text scorePW;
     public enemySpawner eSpawn;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public int lives = 3;
     public int score = 0;
-
+    public int score_for_harder_game = 40;
     void Start()
     {
         players = new List<Player>
@@ -45,6 +45,18 @@ public class GameManager : MonoBehaviour
     {
         if (l_active)
         {
+            if (pMove != null && l_met != null)
+            {
+                var bad_mv = pMove.PozisyondaHataYapanlarKimler(l_met.partToRemove);
+
+                var str = "";
+
+                foreach (var t_str in bad_mv)
+                    str += t_str.ToString() + "; ";
+
+                Debug.Log("Part -> " + l_met.partToRemove + " | " + str);
+            }
+
             StartCoroutine(waitForLive());
             lives -= 1;
 
@@ -56,8 +68,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MeteorDestroyed()
+    meteor l_met;
+
+    public void Rem_Met(meteor met)
     {
+        l_met = met;
+    }
+
+    public void MeteorDestroyed(meteor met)
+    {
+        //l_met = met;
         if (l_active)
         {
             score += 5;
@@ -72,7 +92,11 @@ public class GameManager : MonoBehaviour
         var rand = UnityEngine.Random.Range(0, 10);
 
         var bq = pMove.IsGravityInverse;
-        pMove.IsGravityInverse = rand < 2;
+        if (score > score_for_harder_game * 2)
+        {
+            pMove.IsGravityInverse = rand < 2;
+
+        }
 
         if (bq != pMove.IsGravityInverse)
             if (a_onInversTrigger != null)
