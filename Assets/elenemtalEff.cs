@@ -29,6 +29,9 @@ public class elenemtalEff : MonoBehaviour
 		g_lightning,
 		g_earth;
 
+    public AudioClip
+        au_clash;
+
 
     public Renderer target_r;
 
@@ -36,7 +39,13 @@ public class elenemtalEff : MonoBehaviour
     {
         PlanetMovement.elementalCh += Effect;
         PlanetMovement.onElemTrue += Play;
+        GameManager.onLifeChanged += onClash;
 	}
+
+    public void onClash(int i)
+    {
+        au_src.PlayOneShot(au_clash);
+    }
 
     public void Play(string s)
     {
@@ -108,6 +117,7 @@ public class elenemtalEff : MonoBehaviour
 
     void OnDestroy()
     {
+        GameManager.onLifeChanged -= onClash;
         PlanetMovement.elementalCh -= Effect;
         PlanetMovement.onElemTrue -= Play;
     }
