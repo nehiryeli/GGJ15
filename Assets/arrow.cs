@@ -21,7 +21,7 @@ public class arrow : MonoBehaviour
     void Update()
     {
         var pl = GameManager.getPlayers();
-        renderer.material.color = pl[pID].cekimTusuBasildiMi ? Color.red : Color.green;
+        renderer.material.color = pl[pID].cekimTusuBasildiMi ? Color.green : Color.gray;
     }
 
     void OnDestroy()
