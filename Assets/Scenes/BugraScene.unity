@@ -923,6 +923,7 @@ GameObject:
   - 33: {fileID: 254322524}
   - 23: {fileID: 254322523}
   - 95: {fileID: 254322522}
+  - 114: {fileID: 254322525}
   m_Layer: 0
   m_Name: elektrik
   m_TagString: Untagged
@@ -993,6 +994,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 659601273}
   m_GameObject: {fileID: 254322520}
   m_Mesh: {fileID: 4300000, guid: 5faa8bcea9da22d44897ec370754d514, type: 3}
+--- !u!114 &254322525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 254322520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec19c481abf72846b1fc5dcb05b1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 3
+  b_index: 0
+  b_render:
+  - {fileID: 918955367}
+  - {fileID: 769319556}
+  - {fileID: 1191330515}
 --- !u!1 &272337707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,6 +2364,7 @@ GameObject:
   - 33: {fileID: 769730277}
   - 23: {fileID: 769730276}
   - 95: {fileID: 769730275}
+  - 114: {fileID: 769730279}
   m_Layer: 0
   m_Name: su
   m_TagString: Untagged
@@ -2415,6 +2434,23 @@ Transform:
   - {fileID: 1159486856}
   m_Father: {fileID: 50027829}
   m_RootOrder: 0
+--- !u!114 &769730279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769730274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec19c481abf72846b1fc5dcb05b1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 1
+  b_index: 0
+  b_render:
+  - {fileID: 366938454}
+  - {fileID: 1735218020}
+  - {fileID: 1159486858}
 --- !u!1001 &770122462
 Prefab:
   m_ObjectHideFlags: 0
@@ -4882,6 +4918,7 @@ GameObject:
   - 33: {fileID: 1425023340}
   - 23: {fileID: 1425023339}
   - 95: {fileID: 1425023338}
+  - 114: {fileID: 1425023342}
   m_Layer: 0
   m_Name: toprak
   m_TagString: Untagged
@@ -4951,6 +4988,23 @@ Transform:
   - {fileID: 1910028589}
   m_Father: {fileID: 50027829}
   m_RootOrder: 2
+--- !u!114 &1425023342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1425023337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec19c481abf72846b1fc5dcb05b1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  b_index: 0
+  b_render:
+  - {fileID: 1910028587}
+  - {fileID: 1252775001}
+  - {fileID: 294762081}
 --- !u!1001 &1444394211
 Prefab:
   m_ObjectHideFlags: 0
@@ -5322,6 +5376,7 @@ GameObject:
   - 33: {fileID: 1592851917}
   - 23: {fileID: 1592851916}
   - 95: {fileID: 1592851915}
+  - 114: {fileID: 1592851919}
   m_Layer: 0
   m_Name: ates
   m_TagString: Untagged
@@ -5391,6 +5446,23 @@ Transform:
   - {fileID: 1407678781}
   m_Father: {fileID: 50027829}
   m_RootOrder: 3
+--- !u!114 &1592851919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1592851914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec19c481abf72846b1fc5dcb05b1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 2
+  b_index: 0
+  b_render:
+  - {fileID: 1407678783}
+  - {fileID: 611876316}
+  - {fileID: 282958225}
 --- !u!1001 &1621720518
 Prefab:
   m_ObjectHideFlags: 0

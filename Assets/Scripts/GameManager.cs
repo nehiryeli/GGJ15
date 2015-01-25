@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
             };
     }
 
+    public static Action<List<int>> blame_func;
+
     public void LifeDec()
     {
         if (l_active)
@@ -49,12 +51,15 @@ public class GameManager : MonoBehaviour
             {
                 var bad_mv = pMove.HataYapanlarKimler(l_met.partToRemove, l_met.element);
 
-                var str = "";
+                if (blame_func != null)
+                    blame_func(bad_mv);
+
+                /*var str = "";
 
                 foreach (var t_str in bad_mv)
                     str += t_str.ToString() + "; ";
 
-                Debug.Log("Part -> " + l_met.partToRemove + " | " + str);
+                Debug.Log("Part -> " + l_met.partToRemove + " | " + str);*/
             }
 
             StartCoroutine(waitForLive());
