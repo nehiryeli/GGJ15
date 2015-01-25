@@ -216,6 +216,8 @@ public class PlanetMovement : MonoBehaviour
             transform.Translate((deltaT * hiz));
         }
     }
+    public static System.Action<string>
+        onElemTrue;
 
     public void OnTriggerEnter(Collider c)
     {
@@ -224,9 +226,13 @@ public class PlanetMovement : MonoBehaviour
 
         if (c.tag == "elemental")
         {
-
             if (!IsElementsEqual(m.element))
                 GameManager.inst.LifeDec();
+            else
+            {
+                if (onElemTrue != null)
+                    onElemTrue(m.element);
+            }
         }
         else
             GameManager.inst.LifeDec();

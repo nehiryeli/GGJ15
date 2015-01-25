@@ -22,7 +22,8 @@ public class elenemtalEff : MonoBehaviour
         a_fire,
         a_water,
         a_earth,
-        a_elect;
+        a_elect,
+        a_ch;
 
 
     public Renderer target_r;
@@ -30,14 +31,34 @@ public class elenemtalEff : MonoBehaviour
 	void Start ()
     {
         PlanetMovement.elementalCh += Effect;
+        PlanetMovement.onElemTrue += Play;
 	}
+
+    public void Play(string s)
+    {
+        switch(s)
+        {
+            case "fire":
+                au_src.PlayOneShot(a_fire);
+                break;
+            case "water":
+                au_src.PlayOneShot(a_water);
+                break;
+            case "lightning":
+                au_src.PlayOneShot(a_elect);
+                break;
+            case "earth":
+                au_src.PlayOneShot(a_earth);
+                break;
+        }
+    }
 
     public void Effect()
     {
+        au_src.PlayOneShot(a_ch);
         switch (GameManager.inst.pMove.status)
         {
             case Element.Ateş:
-                //au_src.PlayOneShot(a_fire);
                 target_r.material = m_fire;
                 fire.SetActive(true);
                 water.SetActive(false);
@@ -45,7 +66,6 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Su:
-                //au_src.PlayOneShot(a_water);
                 target_r.material = m_water;
                 fire.SetActive(false);
                 water.SetActive(true);
@@ -53,7 +73,6 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Toprak:
-                //au_src.PlayOneShot(a_earth);
                 target_r.material = m_earth;
                 fire.SetActive(false);
                 water.SetActive(false);
@@ -61,7 +80,6 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Elektrik:
-                //au_src.PlayOneShot(a_elect);
                 target_r.material = m_elect;
                 fire.SetActive(false);
                 water.SetActive(false);
@@ -82,5 +100,6 @@ public class elenemtalEff : MonoBehaviour
     void OnDestroy()
     {
         PlanetMovement.elementalCh -= Effect;
+        PlanetMovement.onElemTrue -= Play;
     }
 }
