@@ -9,6 +9,16 @@ public class elenemtalEff : MonoBehaviour
         earth,
         elect;
 
+    public Material
+        m_fire,
+        m_water,
+        m_earth,
+        m_elect,
+        m_def;
+
+
+    public Renderer target_r;
+
 	void Start ()
     {
         PlanetMovement.elementalCh += Effect;
