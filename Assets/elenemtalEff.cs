@@ -30,7 +30,9 @@ public class elenemtalEff : MonoBehaviour
 		g_earth;
 
     public AudioClip
-        au_clash;
+        au_clash,
+        au_point,
+        au_succ;
 
 
     public Renderer target_r;
@@ -40,6 +42,7 @@ public class elenemtalEff : MonoBehaviour
         PlanetMovement.elementalCh += Effect;
         PlanetMovement.onElemTrue += Play;
         GameManager.onLifeChanged += onClash;
+        GameManager.onScoreUpdated += Score;
 	}
 
     public void onClash(int i)
@@ -64,6 +67,11 @@ public class elenemtalEff : MonoBehaviour
                 au_src.PlayOneShot(a_earth);
                 break;
         }
+    }
+
+    public void Score(int i)
+    {
+
     }
 
     public void Effect()
@@ -117,6 +125,7 @@ public class elenemtalEff : MonoBehaviour
 
     void OnDestroy()
     {
+        GameManager.onScoreUpdated -= Score;
         GameManager.onLifeChanged -= onClash;
         PlanetMovement.elementalCh -= Effect;
         PlanetMovement.onElemTrue -= Play;
