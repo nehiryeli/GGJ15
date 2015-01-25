@@ -105,9 +105,10 @@ public class PlanetMovement : MonoBehaviour
             }
             if (Input.GetKeyDown(item.elementTusu))
             {
+                status = item.element;
+
                 if (elementalCh != null)
                     elementalCh();
-				status = item.element;
                // item.elementTusuBasildiMi = true;
             }/*
             if (Input.GetKeyUp(item.elementTusu))
