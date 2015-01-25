@@ -1497,7 +1497,7 @@ Transform:
   m_GameObject: {fileID: 414850038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 200}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1512,8 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b9de1c1908b1743b95dac7c0fee708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lim: 3
-  duration: 40
+  lim: 20
+  duration: 20
 --- !u!1 &421206216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +1883,14 @@ Prefab:
       propertyPath: au_clash
       value: 
       objectReference: {fileID: 8300000, guid: 006f6428c2f1c4222888790c56b79151, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: au_point
+      value: 
+      objectReference: {fileID: 8300000, guid: f5c43f3d4fe08451f8b6f4fca83bf973, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: au_succ
+      value: 
+      objectReference: {fileID: 8300000, guid: 49bd76337bad540d286badfaf1c2aa0d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
   m_RootGameObject: {fileID: 1159363279}
@@ -3787,6 +3795,8 @@ MonoBehaviour:
   g_lightning: {fileID: 8300000, guid: c18922bb2a35f4f1384ec88e0e0ed729, type: 3}
   g_earth: {fileID: 8300000, guid: 8ad308efb567641b89caf5e01dbbaa9c, type: 3}
   au_clash: {fileID: 8300000, guid: 006f6428c2f1c4222888790c56b79151, type: 3}
+  au_point: {fileID: 8300000, guid: f5c43f3d4fe08451f8b6f4fca83bf973, type: 3}
+  au_succ: {fileID: 8300000, guid: 49bd76337bad540d286badfaf1c2aa0d, type: 3}
   target_r: {fileID: 1912151524}
 --- !u!1 &1159486855
 GameObject:

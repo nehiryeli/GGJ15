@@ -35,6 +35,7 @@ public class elenemtalEff : MonoBehaviour
         au_succ;
 
 
+
     public Renderer target_r;
 
 	void Start ()
@@ -71,7 +72,8 @@ public class elenemtalEff : MonoBehaviour
 
     public void Score(int i)
     {
-
+		au_src.PlayOneShot(au_point);
+		au_src.PlayOneShot(au_succ);
     }
 
     public void Effect()
