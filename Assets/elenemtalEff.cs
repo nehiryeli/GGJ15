@@ -3,6 +3,8 @@ using System.Collections;
 
 public class elenemtalEff : MonoBehaviour
 {
+    public AudioSource au_src;
+
     public GameObject
         fire,
         water,
@@ -15,6 +17,12 @@ public class elenemtalEff : MonoBehaviour
         m_earth,
         m_elect,
         m_def;
+
+    public AudioClip
+        a_fire,
+        a_water,
+        a_earth,
+        a_elect;
 
 
     public Renderer target_r;
@@ -29,6 +37,7 @@ public class elenemtalEff : MonoBehaviour
         switch (GameManager.inst.pMove.status)
         {
             case Element.Ateş:
+                au_src.PlayOneShot(a_fire);
                 target_r.material = m_fire;
                 fire.SetActive(true);
                 water.SetActive(false);
@@ -36,6 +45,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Su:
+                au_src.PlayOneShot(a_water);
                 target_r.material = m_water;
                 fire.SetActive(false);
                 water.SetActive(true);
@@ -43,6 +53,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Toprak:
+                au_src.PlayOneShot(a_earth);
                 target_r.material = m_earth;
                 fire.SetActive(false);
                 water.SetActive(false);
@@ -50,6 +61,7 @@ public class elenemtalEff : MonoBehaviour
                 elect.SetActive(false);
                 break;
             case Element.Elektrik:
+                au_src.PlayOneShot(a_elect);
                 target_r.material = m_elect;
                 fire.SetActive(false);
                 water.SetActive(false);
