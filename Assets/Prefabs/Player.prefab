@@ -1376,11 +1376,11 @@ MonoBehaviour:
   m_earth: {fileID: 2100000, guid: 81c261350316e47bfb41e50ca22910b3, type: 2}
   m_elect: {fileID: 2100000, guid: 96884515dcda644ae8ad4eca582dbdb9, type: 2}
   m_def: {fileID: 2100000, guid: bf71c2e0d060a4a19957a01df8d19d2d, type: 2}
-  a_fire: {fileID: 8300000, guid: a5815112314087f4d8cc1857c6e634af, type: 3}
-  a_water: {fileID: 8300000, guid: d4881b36b355764449f1b4ffe2f463ee, type: 3}
-  a_earth: {fileID: 8300000, guid: 28f188f7b1457164aadf0c6cb42945bb, type: 3}
-  a_elect: {fileID: 8300000, guid: a66ebf4e0edba3648997161c5a55496f, type: 3}
-  a_ch: {fileID: 8300000, guid: d4881b36b355764449f1b4ffe2f463ee, type: 3}
+  a_fire: {fileID: 8300000, guid: fb9c2dfe039b5487c8e82b559c4686df, type: 3}
+  a_water: {fileID: 8300000, guid: 9e8de5c6420db2d49b4bcd736892875f, type: 3}
+  a_earth: {fileID: 8300000, guid: e2f64cd2d0e82453fa4d059a01b7be37, type: 3}
+  a_elect: {fileID: 8300000, guid: 6c6f110e57e4b42d79968638c53766e7, type: 3}
+  a_ch: {fileID: 8300000, guid: 7ae4c1996e1d14e22a568e933fd6d7f3, type: 3}
   target_r: {fileID: 2349292}
 --- !u!114 &11449292
 MonoBehaviour:
