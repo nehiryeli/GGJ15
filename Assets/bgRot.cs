@@ -4,7 +4,7 @@ using System.Collections;
 public class bgRot : MonoBehaviour
 {
     public float lim;
-
+	public float duration = 3;
     Transform t;
 
     IEnumerator Start()
@@ -12,13 +12,14 @@ public class bgRot : MonoBehaviour
         t = transform;
 
         var p = 0f;
-
+		transform.position = getVec3();
+	
         var f_pos = t.position;
         var t_pos = getVec3();
 
         while (true)
         {
-            p += Time.deltaTime;
+            p += Time.deltaTime/duration;
 
             t.position = Vector3.Lerp(f_pos, t_pos,p);
 
