@@ -34,10 +34,10 @@ public class GameManager : MonoBehaviour
     {
         players = new List<Player>
             {
-			new Player (KeyCode.Alpha1, KeyCode.Q, Pozisyon.NW,Element.Toprak),
-			    new Player (KeyCode.Alpha2, KeyCode.W, Pozisyon.NE,Element.Su),
-			new Player (KeyCode.Alpha3, KeyCode.E, Pozisyon.SW,Element.Ateş),
-			    new Player (KeyCode.Alpha4, KeyCode.R, Pozisyon.SE,Element.Elektrik)
+			new Player (KeyCode.Q, KeyCode.W, Pozisyon.NW,Element.Toprak),
+			    new Player (KeyCode.R, KeyCode.T, Pozisyon.NE,Element.Su),
+			new Player (KeyCode.Y, KeyCode.U, Pozisyon.SW,Element.Ateş),
+			    new Player (KeyCode.O, KeyCode.P, Pozisyon.SE,Element.Elektrik)
             };
     }
 
