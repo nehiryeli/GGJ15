@@ -24,13 +24,13 @@ public class meteor : MonoBehaviour
 
         int partToRemove = Random.Range(0, parts.Length);
         int elementIndex = Random.Range(0, 5);
-        if (elementIndex != 4 && GameManager.inst.score > 40)
+        if (elementIndex != 4 && GameManager.inst.score > GameManager.inst.score_for_harder_game)
         {//son elemen elementsiz parçayı gösterir
 			element = GameManager.inst.elementsList[elementIndex];
             //parts [partToRemove].gameObject.renderer.material.color = new Color(222,22,222);
         }
 			
-		if (elementIndex + 1 <= GameManager.inst.elementsList.Length && GameManager.inst.score>40) {
+		if (elementIndex + 1 <= GameManager.inst.elementsList.Length && GameManager.inst.score>GameManager.inst.score_for_harder_game) {
 			parts [elementIndex].gameObject.renderer.tag = "elemental";
 			parts [elementIndex].gameObject.renderer.material = mat_elem [elementIndex];
 		} else {

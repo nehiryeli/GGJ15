@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public int lives = 3;
     public int score = 0;
-
+	public int score_for_harder_game = 40;
     void Start()
     {
         players = new List<Player>
@@ -72,8 +72,11 @@ public class GameManager : MonoBehaviour
         var rand = UnityEngine.Random.Range(0, 10);
 
         var bq = pMove.IsGravityInverse;
-        pMove.IsGravityInverse = rand < 2;
+		if (score > score_for_harder_game * 2) {
+			pMove.IsGravityInverse = rand < 2;
 
+		}
+		
         if (bq != pMove.IsGravityInverse)
             if (a_onInversTrigger != null)
                 a_onInversTrigger();
