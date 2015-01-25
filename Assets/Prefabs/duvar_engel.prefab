@@ -625,14 +625,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   parts:
+  - {fileID: 400006}
   - {fileID: 400014}
   - {fileID: 400012}
   - {fileID: 400010}
   - {fileID: 400008}
-  - {fileID: 400006}
-  - {fileID: 400004}
-  - {fileID: 400002}
   - {fileID: 400000}
+  - {fileID: 400002}
+  - {fileID: 400004}
   element: 
   mat_elem:
   - {fileID: 2100000, guid: 974b5cf30912447e09a047db0aea205f, type: 2}
