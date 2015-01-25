@@ -1863,6 +1863,26 @@ Prefab:
       propertyPath: au_src
       value: 
       objectReference: {fileID: 808576507}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: g_fire
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f25267715aab4b08b58c496b04a2ab2, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: g_water
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d93d3447ce7544948b2b17d1959a890, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: g_lightning
+      value: 
+      objectReference: {fileID: 8300000, guid: c18922bb2a35f4f1384ec88e0e0ed729, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: g_earth
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ad308efb567641b89caf5e01dbbaa9c, type: 3}
+    - target: {fileID: 11439420, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
+      propertyPath: au_clash
+      value: 
+      objectReference: {fileID: 8300000, guid: 006f6428c2f1c4222888790c56b79151, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13f09cc6ec3a0b34093cb470950eea40, type: 2}
   m_RootGameObject: {fileID: 1159363279}
@@ -2696,9 +2716,9 @@ AudioSource:
   m_GameObject: {fileID: 808576500}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 60e6ca0c7d6884ef8adab9ab1844d296, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 416ae7f96f88f463698ec4aa76f3a900, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .128999993
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3762,6 +3782,11 @@ MonoBehaviour:
   a_earth: {fileID: 8300000, guid: e2f64cd2d0e82453fa4d059a01b7be37, type: 3}
   a_elect: {fileID: 8300000, guid: 6c6f110e57e4b42d79968638c53766e7, type: 3}
   a_ch: {fileID: 8300000, guid: 7ae4c1996e1d14e22a568e933fd6d7f3, type: 3}
+  g_fire: {fileID: 8300000, guid: 0f25267715aab4b08b58c496b04a2ab2, type: 3}
+  g_water: {fileID: 8300000, guid: 1d93d3447ce7544948b2b17d1959a890, type: 3}
+  g_lightning: {fileID: 8300000, guid: c18922bb2a35f4f1384ec88e0e0ed729, type: 3}
+  g_earth: {fileID: 8300000, guid: 8ad308efb567641b89caf5e01dbbaa9c, type: 3}
+  au_clash: {fileID: 8300000, guid: 006f6428c2f1c4222888790c56b79151, type: 3}
   target_r: {fileID: 1912151524}
 --- !u!1 &1159486855
 GameObject:
@@ -4171,6 +4196,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
